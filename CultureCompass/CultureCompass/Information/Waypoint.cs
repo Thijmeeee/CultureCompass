@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CultureCompass.Information
+﻿namespace CultureCompass.Information
 {
     internal class Waypoint
     {
@@ -16,7 +10,6 @@ namespace CultureCompass.Information
         private string ImagePath { get; set; }
         private string InfoEnglish { get; set; }
         private string InfoFrench { get; set; }
-        private string InfoDutch { get; set;  }
-    }
+        private string InfoDutch { get; set; }
     }
 }

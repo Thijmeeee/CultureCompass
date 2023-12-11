@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CultureCompass.Notification
+﻿namespace CultureCompass.Notification
 {
     internal interface INotificationType
     {
-        void sendNotification(string text);
+        void SendNotification(string text);
     }
 }

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CultureCompass.Information
+﻿namespace CultureCompass.Information
 {
     internal class Route
     {
-        private List<Waypoint> waypoints { get; set; } = new List<Waypoint>();
+        private List<Waypoint> _waypoints { get; set; } = new List<Waypoint>();
     }
 }
