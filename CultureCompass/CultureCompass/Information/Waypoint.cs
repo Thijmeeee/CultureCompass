@@ -18,5 +18,4 @@ namespace CultureCompass.Information
         private string InfoFrench { get; set; }
         private string InfoDutch { get; set;  }
     }
-    }
 }
