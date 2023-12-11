@@ -9,20 +9,16 @@ namespace CultureCompass
         public MainPage()
         {
             InitializeComponent();
-            notificationManager.SetStrategy(new PushNotification());
+            notificationManager.NotificationType = new InAppNotification();
         }
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
-            var request = notificationManager.SendNotification("Thijme");
 
-            Task<bool> enabled = LocalNotificationCenter.Current.AreNotificationsEnabled();
+            notificationManager.SendNotification("Thijme", "dit is een test");
 
-            if (!enabled.Result)
-            {
-                await LocalNotificationCenter.Current.RequestNotificationPermission();
-            }
-            await LocalNotificationCenter.Current.Show(request);
+            notificationManager.NotificationType = new PushNotification();
+
         }
     }
 

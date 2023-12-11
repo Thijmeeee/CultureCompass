@@ -21,15 +21,12 @@ namespace CultureCompass.Notification
             NotificationType = notificationType;
         }
 
-        public NotificationRequest SendNotification(string text)
+        public async void SendNotification(string text, string description)
         {
-            return NotificationType.SendNotification(text);
+           
+
+            NotificationType.SendNotification(text, description);
         }
-
-       
-
-        
-
     }
 
 }

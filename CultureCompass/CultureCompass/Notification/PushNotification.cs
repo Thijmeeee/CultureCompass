@@ -10,13 +10,15 @@ namespace CultureCompass.Notification
 {
     internal class PushNotification : INotificationType
     {
-        public NotificationRequest SendNotification(string text)
+        public void SendNotification(string title, string description)
         {
-            return new NotificationRequest
+            CheckPermissionOfUser();
+
+            var request = new NotificationRequest
             {
                 NotificationId = 1337,
-                Title = $"Close to waypoint: {text}",
-                Description = "Information here",
+                Title = $"Close to waypoint: {title}",
+                Description = description,
                 BadgeNumber = 42,
                 Schedule = new NotificationRequestSchedule
                 {
@@ -24,10 +26,19 @@ namespace CultureCompass.Notification
                 },
                 Android = new AndroidOptions
                 {
-                    Color = new AndroidColor(150)
+                    Color = new AndroidColor(255)
                 }
             };
-          
+           LocalNotificationCenter.Current.Show(request);
+        }
+        private async void CheckPermissionOfUser()
+        {
+            var enabled = LocalNotificationCenter.Current.AreNotificationsEnabled().Result;
+
+            if (!enabled)
+            {
+                await LocalNotificationCenter.Current.RequestNotificationPermission();
+            }
         }
     }
 }
