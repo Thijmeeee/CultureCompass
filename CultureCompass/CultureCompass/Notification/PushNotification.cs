@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CultureCompass.Notification
 {
-    internal class PushNotification
+    internal class PushNotification : INotificationType
     {
+        public void sendNotification(string text)
+        {
+
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace CultureCompass.Information
 {
     internal class Route
     {
+        private List<Waypoint> waypoints { get; set; } = new List<Waypoint>();
     }
 }

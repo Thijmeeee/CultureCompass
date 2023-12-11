@@ -8,5 +8,6 @@ namespace CultureCompass.Notification
 {
     internal interface INotificationType
     {
+        void sendNotification(string text);
     }
 }

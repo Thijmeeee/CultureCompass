@@ -19,6 +19,9 @@ namespace CultureCompass.Notification
         {
             NotificationType = notificationType;
         }
+
+        
+
     }
 
 }
