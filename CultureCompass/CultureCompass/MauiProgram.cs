@@ -1,7 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.Hosting;
 
 namespace CultureCompass
 {
+
     public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()
@@ -13,13 +15,11 @@ namespace CultureCompass
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
-
-#if DEBUG
-    		builder.Logging.AddDebug();
-#endif
+                })
+                .UseMauiMaps();
 
             return builder.Build();
         }
     }
 }
+

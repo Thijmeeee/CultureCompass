@@ -16,7 +16,7 @@ namespace CultureCompass.Information
         private string ImagePath { get; set; }
         private string InfoEnglish { get; set; }
         private string InfoFrench { get; set; }
-        private string InfoDutch { get; set;  }
-    }
+        private string InfoDutch { get; set; }
     }
 }
+
