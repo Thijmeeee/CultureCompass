@@ -1,4 +1,6 @@
-﻿using Map = Microsoft.Maui.Controls.Maps.Map;
+﻿using CultureCompass.Information;
+using CultureCompass.Navigation;
+using Map = Microsoft.Maui.Controls.Maps.Map;
 
 namespace CultureCompass
 {
@@ -7,8 +9,16 @@ namespace CultureCompass
         public MainPage()
         {
             InitializeComponent();
-            Map map = new Map();
-            Content = map;
+            RouteManager routeManager = new RouteManager(this);
+            routeManager.SetRoute(new Route());
+        }
+
+        public void UpdateMap(Map map)
+        {
+            Dispatcher.Dispatch(() =>
+            {
+                Content = map;
+            });
         }
     }
 
