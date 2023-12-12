@@ -6,6 +6,11 @@
         {
             InitializeComponent();
         }
+
+        public void OnStartClicked(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
