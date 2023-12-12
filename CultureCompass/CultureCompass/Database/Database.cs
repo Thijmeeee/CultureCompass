@@ -1,29 +1,76 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CultureCompass.Information;
+﻿using CultureCompass.Information;
+using SQLite;
 
 namespace CultureCompass.Database
 {
-    internal class Database
+    public class Database
     {
-
-        private void AddWaypoint(Waypoint point)
+        private SQLiteConnection _connection;
+        private const string _databasePath = "database.db";
+        public Database()
         {
+            string applicationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "DatabaseFile");
+            Directory.CreateDirectory(applicationFolderPath);
 
+            string databaseFileName = Path.Combine(applicationFolderPath, _databasePath);
+            _connection = new SQLiteConnection(databaseFileName);
+
+            _connection.CreateTable<WaypointTable>();
+        }
+        
+        public void CreateWaypoint(Waypoint point)
+        {
+            if (point != null)
+            {
+                WaypointTable waypoint = new WaypointTable()
+                {
+                    WaypointId = point.WaypointId,
+                    Name = point.Name,
+                    YearCreated = point.YearCreated,
+                    PictureName = point.PictureName,
+                    InfoEnglish = point.InfoEnglish,
+                    InfoDutch = point.InfoDutch,
+                    InfoFrench = point.InfoFrench,
+                    XCoordinate = point.XCoordinate,
+                    YCoordinate = point.YCoordinate
+                };
+                _connection.Insert(waypoint);
+            }
         }
 
-        private void DeleteWaypoint(int pointId)
+        public Waypoint ReadWaypoint(string name)
         {
-
+            return _connection.FindWithQuery<Waypoint>("SELECT * FROM WaypointTable WHERE [Name] = ?", name);
+        }
+        
+        public void UpdateWaypoint(WaypointTable updatedPoint)
+        {
+            _connection.Update(updatedPoint);
+        }
+        
+        public void DeleteWaypoint(Waypoint point)
+        {
+            if (point != null)
+            {
+                WaypointTable waypoint = new WaypointTable()
+                {
+                    WaypointId = point.WaypointId,
+                    Name = point.Name,
+                    YearCreated = point.YearCreated,
+                    PictureName = point.PictureName,
+                    InfoEnglish = point.InfoEnglish,
+                    InfoDutch = point.InfoDutch,
+                    InfoFrench = point.InfoFrench,
+                    XCoordinate = point.XCoordinate,
+                    YCoordinate = point.YCoordinate
+                };
+                _connection.Delete<WaypointTable>(waypoint.WaypointId);
+            }
         }
 
-        private void UpdateWaypoint(Waypoint updatedPoint, int oldPointId)
+        public void CloseDatabase()
         {
-
+            _connection.Close();
         }
     }
-
 }

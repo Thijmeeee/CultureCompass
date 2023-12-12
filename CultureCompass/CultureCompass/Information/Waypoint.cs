@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CultureCompass.Information
+﻿namespace CultureCompass.Information
 {
-    internal class Waypoint
+    public class Waypoint
     {
-        private int ID { get; set; }
-        private double X { get; set; }
-        private double Y { get; set; }
-        private string Name { get; set; }
-        private int Year { get; set; }
-        private string ImagePath { get; set; }
-        private string InfoEnglish { get; set; }
-        private string InfoFrench { get; set; }
-        private string InfoDutch { get; set;  }
+        public int WaypointId { get; set; }
+        public string Name { get; set; }
+        public int YearCreated { get; set; }
+        public string PictureName { get; set; }
+        public string InfoEnglish { get; set; }
+        public string InfoDutch { get; set; }
+        public string InfoFrench { get; set; }
+        public double XCoordinate { get; set; }
+        public double YCoordinate { get; set; }
     }
 }
