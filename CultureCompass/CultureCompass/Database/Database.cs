@@ -12,7 +12,7 @@ namespace CultureCompass.Database
             _connection = new SQLiteConnection(filename);
         }
 
-        private void AddWaypoint(Waypoint point)
+        public void AddWaypoint(Waypoint point)
         {
             if (point != null)
             {
@@ -32,7 +32,7 @@ namespace CultureCompass.Database
             }
         }
 
-        private void DeleteWaypoint(Waypoint point)
+        public void DeleteWaypoint(Waypoint point)
         {
             if (point != null)
             {
@@ -52,10 +52,17 @@ namespace CultureCompass.Database
             }
         }
 
-        private void UpdateWaypoint(Waypoint updatedPoint, int oldPointId)
+        public void UpdateWaypoint(Waypoint updatedPoint)
         {
-            
+            _connection.Update(updatedPoint);
         }
+
+        public void CloseDatabase()
+        {
+            _connection.Close();
+        }
+        
+        
     }
 
 }
