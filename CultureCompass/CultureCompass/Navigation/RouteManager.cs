@@ -15,6 +15,7 @@ using CommunityToolkit.Maui.Core;
 
 //https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/map?view=net-maui-8.0
 //https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/appmodel/maps?view=net-maui-8.0&tabs=android
+//https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/device/geolocation?view=net-maui-8.0&tabs=android
 //https://developers.google.com/maps/documentation/directions/get-directions#DirectionsResponses
 
 
@@ -160,6 +161,20 @@ namespace CultureCompass.Navigation
             }
         }
 
+        void OnStopListening()
+        {
+            try
+            {
+                Geolocation.LocationChanged -= Geolocation_LocationChanged;
+                Geolocation.StopListeningForeground();
+                string status = "Stopped listening for foreground location updates";
+            }
+            catch (Exception ex)
+            {
+                // Unable to stop listening for location changes
+            }
+        }
+
         void Geolocation_LocationChanged(object sender, GeolocationLocationChangedEventArgs e)
         {
             Location currentWaypoint = new Location(route.waypoints[routeIndex].X, route.waypoints[routeIndex].Y);
@@ -188,6 +203,8 @@ namespace CultureCompass.Navigation
                     text = "end of route";
                     toast = Toast.Make(text, duration, fontSize);
                     toast.Show();
+
+                    OnStopListening();
                 }
             }
         }
