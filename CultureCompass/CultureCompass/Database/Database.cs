@@ -42,7 +42,12 @@ namespace CultureCompass.Database
         {
             return _connection.FindWithQuery<Waypoint>("SELECT * FROM WaypointTable WHERE [Name] = ?", name);
         }
-        
+
+        public List<Waypoint> ReadWaypoints()
+        {
+            return _connection.FindWithQuery<List<Waypoint>>("SELECT * FROM WaypointTable");
+        }
+
         public void UpdateWaypoint(WaypointTable updatedPoint)
         {
             _connection.Update(updatedPoint);
