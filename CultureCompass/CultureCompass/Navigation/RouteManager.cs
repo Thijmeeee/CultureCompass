@@ -25,6 +25,8 @@ namespace CultureCompass.Navigation
         private Map map;
         private Route route;
         private MainPage mainPage;
+        private int routeIndex;
+        private double distanceThreshold = 20;
 
         public RouteManager(MainPage mainPage)
         {
@@ -40,6 +42,7 @@ namespace CultureCompass.Navigation
             {
                 location = new Location(51.5859361157708, 4.792374891466518);
             }
+
             MapSpan mapSpan = new MapSpan(location, 0.005, 0.005);
 
             map = new Map(mapSpan)
@@ -77,39 +80,42 @@ namespace CultureCompass.Navigation
                 if (location != null)
                     return location;
             }
-           
+
             catch (Exception ex)
             {
                 // Unable to get location
             }
+
             return null;
         }
 
 
-        public void SetRoute(Route route)
+        public async Task SetRoute(Route route)
         {
+            this.routeIndex = 0;
             this.route = route;
-            if (route.waypoints.Count > 0)
+            if (route.waypoints.Count == 0)
             {
-                RouteToNextPoint(route.waypoints.First());
-                route.waypoints.Remove(route.waypoints.First());
-            }
-            else
-            {
-                Waypoint waypoint = new Waypoint()
+                //test code
+                route.waypoints = new List<Waypoint>()
                 {
-                    ID = 0,
-                    X = 51.58903179679572,
-                    Y = 4.775741802339474,
-                    Name = "Test"
+                    new()
+                    {
+                        ID = 0,
+                        X = 51.58903179679572,
+                        Y = 4.775741802339474,
+                        Name = "Test"
+                    }
                 };
-
-                RouteToNextPoint(waypoint).Wait();
             }
+
+            await RouteToNextPoint();
         }
 
-        private async Task RouteToNextPoint(Waypoint waypoint)
+        private async Task RouteToNextPoint()
         {
+            Waypoint waypoint = route.waypoints[routeIndex];
+
             Pin pin = new Pin
             {
                 Label = waypoint.Name,
@@ -156,12 +162,34 @@ namespace CultureCompass.Navigation
 
         void Geolocation_LocationChanged(object sender, GeolocationLocationChangedEventArgs e)
         {
-            string text = "new Location: " + e.Location;
+            Location currentWaypoint = new Location(route.waypoints[routeIndex].X, route.waypoints[routeIndex].Y);
+            Distance distance = Distance.BetweenPositions(e.Location, currentWaypoint);
+
+            string text = "distance to waypoint: " + distance.Meters + "m";
             ToastDuration duration = ToastDuration.Short;
             double fontSize = 14;
-            var toast = Toast.Make(text, duration, fontSize);
 
+            var toast = Toast.Make(text, duration, fontSize);
             toast.Show();
+
+            if (distance.Meters <= distanceThreshold)
+            {
+                routeIndex++;
+
+                //send notification that user is close to waypoint
+
+                if (route.waypoints.Count > routeIndex)
+                {
+                    RouteToNextPoint().Wait();
+                }
+                else
+                {
+                    //route ended
+                    text = "end of route";
+                    toast = Toast.Make(text, duration, fontSize);
+                    toast.Show();
+                }
+            }
         }
     }
 }
