@@ -2,7 +2,7 @@
 
 namespace CultureCompass.Database;
 
-[Table("Waypoint")]
+[Table("WaypointTable")]
 public class WaypointTable
 {
     [PrimaryKey, AutoIncrement]

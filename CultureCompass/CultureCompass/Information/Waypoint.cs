@@ -1,6 +1,6 @@
 ﻿namespace CultureCompass.Information
 {
-    internal class Waypoint
+    public class Waypoint
     {
         public int WaypointId { get; set; }
         public string Name { get; set; }

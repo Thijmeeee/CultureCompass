@@ -3,16 +3,22 @@ using SQLite;
 
 namespace CultureCompass.Database
 {
-    internal class Database
+    public class Database
     {
         private SQLiteConnection _connection;
+        private const string _databasePath = "database.db";
         public Database()
         {
-            string filename = Environment.CurrentDirectory + "/database.db";
-            _connection = new SQLiteConnection(filename);
-        }
+            string applicationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "DatabaseFile");
+            Directory.CreateDirectory(applicationFolderPath);
 
-        public void AddWaypoint(Waypoint point)
+            string databaseFileName = Path.Combine(applicationFolderPath, _databasePath);
+            _connection = new SQLiteConnection(databaseFileName);
+
+            _connection.CreateTable<WaypointTable>();
+        }
+        
+        public void CreateWaypoint(Waypoint point)
         {
             if (point != null)
             {
@@ -32,6 +38,16 @@ namespace CultureCompass.Database
             }
         }
 
+        public Waypoint ReadWaypoint(string name)
+        {
+            return _connection.FindWithQuery<Waypoint>("SELECT * FROM WaypointTable WHERE [Name] = ?", name);
+        }
+        
+        public void UpdateWaypoint(WaypointTable updatedPoint)
+        {
+            _connection.Update(updatedPoint);
+        }
+        
         public void DeleteWaypoint(Waypoint point)
         {
             if (point != null)
@@ -52,17 +68,9 @@ namespace CultureCompass.Database
             }
         }
 
-        public void UpdateWaypoint(Waypoint updatedPoint)
-        {
-            _connection.Update(updatedPoint);
-        }
-
         public void CloseDatabase()
         {
             _connection.Close();
         }
-        
-        
     }
-
 }

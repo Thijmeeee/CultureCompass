@@ -1,6 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CultureCompass.MainPage">
-
+             x:Class="CultureCompass.UI.MainPage">
+    <VerticalStackLayout>
+        <!-- this is to test the database -->
+        <Label x:Name="waypointid"></Label>
+        <Label x:Name="name"></Label>
+        <Label x:Name="yearcreated"></Label>
+        <Label x:Name="picturename"></Label>
+        <Label x:Name="infoenglish"></Label>
+        <Label x:Name="infodutch"></Label>
+        <Label x:Name="infofrench"></Label>
+        <Label x:Name="xcoordinate"></Label>
+        <Label x:Name="ycoordinate"></Label>
+    </VerticalStackLayout>
+    
 </ContentPage>
