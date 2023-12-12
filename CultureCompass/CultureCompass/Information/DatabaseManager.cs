@@ -18,5 +18,22 @@ namespace CultureCompass.Information
             return null;
         }
 
+        private void AddWaypoint(Waypoint point)
+        {
+
+        }
+
+        private void DeleteWaypoint(int pointId)
+        {
+
+        }
+
+        private void UpdateWaypoint(Waypoint updatedWaypoint, int oldPointId)
+        {
+
+        }
+
+        
+
     }
 }

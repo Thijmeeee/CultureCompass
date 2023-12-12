@@ -14,11 +14,9 @@ namespace CultureCompass
 
         private async void OnCounterClicked(object sender, EventArgs e)
         {
-
             notificationManager.SendNotification("Thijme", "dit is een test");
 
             notificationManager.NotificationType = new PushNotification();
-
         }
     }
 

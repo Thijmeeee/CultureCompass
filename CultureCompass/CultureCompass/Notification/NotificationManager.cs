@@ -9,22 +9,10 @@ namespace CultureCompass.Notification
 {
     internal class NotificationManager
     {
-        public INotificationType NotificationType { get; set; }
-
-        public NotificationManager()
-        {
-            NotificationType = new PushNotification();
-        }
-
-        public void SetStrategy(INotificationType notificationType)
-        {
-            NotificationType = notificationType;
-        }
+        public INotificationType NotificationType { get; set; } = new PushNotification();
 
         public async void SendNotification(string text, string description)
         {
-           
-
             NotificationType.SendNotification(text, description);
         }
     }
