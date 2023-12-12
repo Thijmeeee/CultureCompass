@@ -43,6 +43,7 @@ namespace CultureCompass.Navigation
         private void Geolocation_LocationChanged(object sender, GeolocationLocationChangedEventArgs e)
         {
             mapManager.UpdateRouteLine(e.Location);
+            mapManager.CenterMap(e.Location);
 
             Location currentWaypoint = routeManager.GetWaypointLocation();
             if (currentWaypoint != null)

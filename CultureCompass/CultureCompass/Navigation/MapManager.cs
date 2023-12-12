@@ -8,6 +8,7 @@ namespace CultureCompass.Navigation
     internal class MapManager(RouteManager routeManager)
     {
         private Map map;
+        private Distance mapSize = Distance.FromMeters(50);
         public async Task<Map> CreateMap()
         {
             Location location = await routeManager.GetCurrentLocation();
@@ -17,7 +18,7 @@ namespace CultureCompass.Navigation
                 location = new Location(51.5859361157708, 4.792374891466518);
             }
 
-            MapSpan mapSpan = new MapSpan(location, 0.005, 0.005);
+            MapSpan mapSpan = MapSpan.FromCenterAndRadius(location, mapSize);
 
             map = new Map(mapSpan)
             {
@@ -61,6 +62,12 @@ namespace CultureCompass.Navigation
             };
             map.MapElements.Add(polyline);
             routeManager.UpdateMap(map);
+        }
+
+        public void CenterMap(Location location)
+        {
+            MapSpan mapSpan = MapSpan.FromCenterAndRadius(location, mapSize);
+            map.MoveToRegion(mapSpan);
         }
     }
 }
