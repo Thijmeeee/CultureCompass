@@ -4,33 +4,29 @@ namespace CultureCompass.Information
 {
     internal class DatabaseManager
     {
-        private Database.Database database;
+        public Database.Database database {  get; set; }
 
-        public DatabaseManager(Database.Database database)
+        public Waypoint GetWaypoint(int pointId)
         {
-            this.database = database;
-        }
-        private Waypoint GetWaypoint(string name)
-        {
-            return database.ReadWaypoint(name);
+            return database.ReadWaypoint(pointId);
         }
 
-        private List<Waypoint> GetAllWaypoints(int pointId)
+        public List<Waypoint> GetAllWaypoints(int pointId)
         {
             return database.ReadWaypoints();
         }
 
-        private void AddWaypoint(Waypoint point)
+        public void AddWaypoint(Waypoint point)
         {
             database.CreateWaypoint(point);
         }
 
-        private void DeleteWaypoint(Waypoint point)
+        public void DeleteWaypoint(Waypoint point)
         {
             database.DeleteWaypoint(point);
         }
 
-        private void UpdateWaypoint(Waypoint updatedWaypoint)
+        public void UpdateWaypoint(Waypoint updatedWaypoint)
         {
             WaypointTable updatedReceived = new WaypointTable()
             {

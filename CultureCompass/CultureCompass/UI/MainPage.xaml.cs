@@ -23,6 +23,7 @@ namespace CultureCompass.UI
         {
             //create database
             _database = new Database.Database();
+
             
             //create waypoint
             Waypoint waypoint = new Waypoint()
@@ -42,7 +43,7 @@ namespace CultureCompass.UI
             _database.CreateWaypoint(waypoint);
             
             //get/read waypoint object from database by name
-            Waypoint received =  _database.ReadWaypoint("test");
+            Waypoint received =  _database.ReadWaypoint(1);
             
             //make database waypoint object
             WaypointTable updatedReceived = new WaypointTable()
@@ -63,7 +64,7 @@ namespace CultureCompass.UI
             _database.UpdateWaypoint(updatedReceived);
             
             //get/read new updated waypoint object
-            Waypoint newReceived =  _database.ReadWaypoint("test");
+            Waypoint newReceived =  _database.ReadWaypoint(1);
             
             //show properties of waypoint object in labels in app
             waypointid.Text = newReceived.ID.ToString();

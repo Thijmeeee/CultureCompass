@@ -1,4 +1,6 @@
-﻿namespace CultureCompass.Information
+﻿using Microsoft.Maui.Controls.Maps;
+
+namespace CultureCompass.Information
 {
     internal class Route
     {
