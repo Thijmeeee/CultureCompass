@@ -1,6 +1,6 @@
-﻿using CultureCompass.Pages;
+﻿using CultureCompass.UI;
 
-namespace CultureCompass
+namespace CultureCompass.UI
 {
     public partial class MainPage : ContentPage
     {
@@ -11,8 +11,7 @@ namespace CultureCompass
 
         public void OnStartClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MapPage());
+            Navigation.PushAsync(new NavigationPage());
         }
     }
-
 }

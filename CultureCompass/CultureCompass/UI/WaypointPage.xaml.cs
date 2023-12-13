@@ -1,4 +1,4 @@
-namespace CultureCompass.Pages;
+namespace CultureCompass.UI;
 
 public partial class WaypointPage : ContentPage
 {

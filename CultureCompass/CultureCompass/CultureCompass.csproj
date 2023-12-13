@@ -69,7 +69,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="UI\MapPage.xaml">
+	  <Compile Update="UI\DetailPage.xaml.cs">
+	    <DependentUpon>DetailPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\NavigationPage.xaml.cs">
+	    <DependentUpon>NavigationPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="UI\NavigationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\DetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UI\WaypointPage.xaml">

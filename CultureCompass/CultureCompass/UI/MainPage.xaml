@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CultureCompass.MainPage"
+             x:Class="CultureCompass.UI.MainPage"
              Title="Instructions">
-    <Grid RowDefinitions="Auto, Auto, Auto, Auto, *, Auto, Auto, Auto"
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, *, Auto, Auto"
           ColumnDefinitions="*, *"
           Padding="15">
+        
         <Label
                 VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
                 Text="Instructions about usage of the app"

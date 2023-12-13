@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             x:Class="CultureCompass.UI.NavigationPage"
+             Title="Map">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <maps:Map x:Name="map" MapType="Street" IsShowingUser="True"
+                  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+        <Button Text="DetailPage" Clicked="OnTab1Clicked"  Grid.Row="1" Grid.Column="0" Margin="8" BackgroundColor="White" TextColor="Blue"/>
+        <Button Text="Tab 2" Clicked="OnTab2Clicked"  Grid.Row="1" Grid.Column="1" Margin="8" BackgroundColor="White" TextColor="Blue"/>
+        <Button Text="Tab 3" Clicked="OnTab2Clicked"  Grid.Row="1" Grid.Column="2" Margin="8" BackgroundColor="White" TextColor="Blue"/>
+    </Grid>
+</ContentPage>
+
