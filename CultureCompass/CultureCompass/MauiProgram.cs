@@ -1,8 +1,10 @@
 ﻿using Microsoft.Extensions.Logging;
 using Plugin.LocalNotification;
+using Microsoft.Maui.Controls.Hosting;
 
 namespace CultureCompass
 {
+
     public static class MauiProgram
     {
         public static MauiApp CreateMauiApp()
@@ -26,3 +28,4 @@ namespace CultureCompass
         }
     }
 }
+

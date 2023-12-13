@@ -79,6 +79,16 @@ namespace CultureCompass.UI
             // <Label x:Name="infofrench"></Label>
             // <Label x:Name="xcoordinate"></Label>
             // <Label x:Name="ycoordinate"></Label>
+            RouteManager routeManager = new RouteManager(this);
+            routeManager.SetRoute(new Route());
+        }
+
+        public void UpdateMap(Map map)
+        {
+            Dispatcher.Dispatch(() =>
+            {
+                Content = map;
+            });
         }
     }
 }

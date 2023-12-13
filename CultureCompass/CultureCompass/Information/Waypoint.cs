@@ -2,14 +2,15 @@
 {
     public class Waypoint
     {
-        public int WaypointId { get; set; }
+        public int ID { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
         public string Name { get; set; }
-        public int YearCreated { get; set; }
-        public string PictureName { get; set; }
+        public int Year { get; set; }
+        public string ImagePath { get; set; }
         public string InfoEnglish { get; set; }
-        public string InfoDutch { get; set; }
         public string InfoFrench { get; set; }
-        public double XCoordinate { get; set; }
-        public double YCoordinate { get; set; }
+        public string InfoDutch { get; set; }
     }
 }
+
