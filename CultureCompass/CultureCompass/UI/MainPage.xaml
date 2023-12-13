@@ -33,6 +33,4 @@
         <Image x:Name="VvvLogo" Source="vvv_logo.png" Grid.Row="6" Grid.Column="1" WidthRequest="100" HeightRequest="100"/>
 
     </Grid>
-
-
 </ContentPage>
