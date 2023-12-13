@@ -1,4 +1,7 @@
 ﻿using CultureCompass.Information;
+using CultureCompass.Notification;
+using CultureCompass.UI;
+using Microsoft.Maui.Devices.Sensors;
 using Map = Microsoft.Maui.Controls.Maps.Map;
 
 
@@ -15,6 +18,7 @@ namespace CultureCompass.Navigation
         private MainPage mainPage;
         private LocationListener locationListener;
         private MapManager mapManager;
+        private NotificationManager notificationManager;
 
         private Route route;
         private int routeIndex;
@@ -29,6 +33,9 @@ namespace CultureCompass.Navigation
 
             this.locationListener = new LocationListener(this, mapManager);
             locationListener.StartListening();
+
+            this.notificationManager = new NotificationManager();
+            this.notificationManager.NotificationType = new PushNotification();
         }
 
         public async Task<Location> GetCurrentLocation()
@@ -36,6 +43,8 @@ namespace CultureCompass.Navigation
             try
             {
                 Location location = await Geolocation.Default.GetLastKnownLocationAsync();
+
+                
 
                 if (location != null)
                     return location;
@@ -64,6 +73,8 @@ namespace CultureCompass.Navigation
         public void ArrivedAtWaypoint()
         {
             routeIndex++;
+
+          
 
             //send notification that user is close to waypoint
 
@@ -108,6 +119,8 @@ namespace CultureCompass.Navigation
 
         public void UpdateMap(Map map)
         {
+            notificationManager.SendNotification($"Location: kip", "test");
+
             mainPage.UpdateMap(map);
         }
     }

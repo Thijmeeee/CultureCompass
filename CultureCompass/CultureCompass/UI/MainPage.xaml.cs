@@ -1,5 +1,8 @@
 ﻿using CultureCompass.Database;
 using CultureCompass.Information;
+using CultureCompass.Navigation;
+using Microsoft.Maui.Controls.Maps;
+using Map = Microsoft.Maui.Controls.Maps.Map;
 
 namespace CultureCompass.UI
 {
@@ -9,7 +12,11 @@ namespace CultureCompass.UI
         public MainPage()
         {
             InitializeComponent();
-            TestDatabase();
+
+            RouteManager routeManager = new RouteManager(this);
+            routeManager.SetRoute(new Route());
+
+           // TestDatabase();
         }
 
         private void TestDatabase()
@@ -20,15 +27,15 @@ namespace CultureCompass.UI
             //create waypoint
             Waypoint waypoint = new Waypoint()
             {
-                WaypointId = 1,
+                ID = 1,
                 Name = "test",
-                YearCreated = 2,
-                PictureName = "what",
+                Year = 2,
+                ImagePath = "what",
                 InfoEnglish = "yes",
                 InfoDutch = "ja",
                 InfoFrench = "oui",
-                XCoordinate = 1.2,
-                YCoordinate = 16.7
+                X = 1.2,
+                Y = 16.7
             };
             
             //create and save new database waypoint object
@@ -40,15 +47,15 @@ namespace CultureCompass.UI
             //make database waypoint object
             WaypointTable updatedReceived = new WaypointTable()
             {
-                WaypointId = received.WaypointId,
+                WaypointId = received.ID,
                 Name = received.Name,
                 YearCreated = 6969,
-                PictureName = received.PictureName,
+                PictureName = received.ImagePath,
                 InfoEnglish = received.InfoEnglish,
                 InfoDutch = received.InfoDutch,
                 InfoFrench = received.InfoFrench,
-                XCoordinate = received.XCoordinate,
-                YCoordinate = received.YCoordinate
+                XCoordinate = received.X,
+                YCoordinate = received.Y
             };
             
             //update the existing waypoint in the database by giving new object
@@ -59,15 +66,15 @@ namespace CultureCompass.UI
             Waypoint newReceived =  _database.ReadWaypoint("test");
             
             //show properties of waypoint object in labels in app
-            waypointid.Text = newReceived.WaypointId.ToString();
+            waypointid.Text = newReceived.ID.ToString();
             name.Text = newReceived.Name;
-            yearcreated.Text = newReceived.YearCreated.ToString();
-            picturename.Text = newReceived.PictureName;
+            yearcreated.Text = newReceived.Year.ToString();
+            picturename.Text = newReceived.ImagePath;
             infoenglish.Text = newReceived.InfoEnglish;
             infodutch.Text = newReceived.InfoDutch;
             infofrench.Text = newReceived.InfoFrench;
-            xcoordinate.Text = newReceived.XCoordinate.ToString();
-            ycoordinate.Text = newReceived.YCoordinate.ToString();
+            xcoordinate.Text = newReceived.X.ToString();
+            ycoordinate.Text = newReceived.Y.ToString();
             
             //xaml code:
             // <Label x:Name="waypointid"></Label>
@@ -79,8 +86,7 @@ namespace CultureCompass.UI
             // <Label x:Name="infofrench"></Label>
             // <Label x:Name="xcoordinate"></Label>
             // <Label x:Name="ycoordinate"></Label>
-            RouteManager routeManager = new RouteManager(this);
-            routeManager.SetRoute(new Route());
+            
         }
 
         public void UpdateMap(Map map)

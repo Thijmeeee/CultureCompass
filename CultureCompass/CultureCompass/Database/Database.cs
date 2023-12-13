@@ -24,15 +24,15 @@ namespace CultureCompass.Database
             {
                 WaypointTable waypoint = new WaypointTable()
                 {
-                    WaypointId = point.WaypointId,
+                    WaypointId = point.ID,
                     Name = point.Name,
-                    YearCreated = point.YearCreated,
-                    PictureName = point.PictureName,
+                    YearCreated = point.Year,
+                    PictureName = point.ImagePath,
                     InfoEnglish = point.InfoEnglish,
                     InfoDutch = point.InfoDutch,
                     InfoFrench = point.InfoFrench,
-                    XCoordinate = point.XCoordinate,
-                    YCoordinate = point.YCoordinate
+                    XCoordinate = point.X,
+                    YCoordinate = point.Y
                 };
                 _connection.Insert(waypoint);
             }
@@ -59,15 +59,15 @@ namespace CultureCompass.Database
             {
                 WaypointTable waypoint = new WaypointTable()
                 {
-                    WaypointId = point.WaypointId,
+                    WaypointId = point.ID,
                     Name = point.Name,
-                    YearCreated = point.YearCreated,
-                    PictureName = point.PictureName,
+                    YearCreated = point.Year,
+                    PictureName = point.ImagePath,
                     InfoEnglish = point.InfoEnglish,
                     InfoDutch = point.InfoDutch,
                     InfoFrench = point.InfoFrench,
-                    XCoordinate = point.XCoordinate,
-                    YCoordinate = point.YCoordinate
+                    XCoordinate = point.X,
+                    YCoordinate = point.Y
                 };
                 _connection.Delete<WaypointTable>(waypoint.WaypointId);
             }

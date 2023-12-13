@@ -34,15 +34,15 @@ namespace CultureCompass.Information
         {
             WaypointTable updatedReceived = new WaypointTable()
             {
-                WaypointId = updatedWaypoint.WaypointId,
+                WaypointId = updatedWaypoint.ID,
                 Name = updatedWaypoint.Name,
                 YearCreated = 6969,
-                PictureName = updatedWaypoint.PictureName,
+                PictureName = updatedWaypoint.ImagePath,
                 InfoEnglish = updatedWaypoint.InfoEnglish,
                 InfoDutch = updatedWaypoint.InfoDutch,
                 InfoFrench = updatedWaypoint.InfoFrench,
-                XCoordinate = updatedWaypoint.XCoordinate,
-                YCoordinate = updatedWaypoint.YCoordinate
+                XCoordinate = updatedWaypoint.X,
+                YCoordinate = updatedWaypoint.Y
             };
             database.UpdateWaypoint(updatedReceived);
         }
