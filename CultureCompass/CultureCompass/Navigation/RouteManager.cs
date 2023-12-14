@@ -4,6 +4,7 @@ using CultureCompass.UI;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Devices.Sensors;
 using Map = Microsoft.Maui.Controls.Maps.Map;
+using NavigationPage = CultureCompass.UI.NavigationPage;
 
 
 //https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/map?view=net-maui-8.0
@@ -16,7 +17,7 @@ namespace CultureCompass.Navigation
 {
     internal class RouteManager
     {
-        private MainPage mainPage;
+        private NavigationPage navigationPage;
         private LocationListener locationListener;
         private MapManager mapManager;
         private NotificationManager notificationManager;
@@ -25,9 +26,9 @@ namespace CultureCompass.Navigation
         private int routeIndex;
 
 
-        public RouteManager(MainPage mainPage)
+        public RouteManager(NavigationPage navigationPage)
         {
-            this.mainPage = mainPage;
+            this.navigationPage = navigationPage;
 
             this.mapManager = new MapManager(this);
             mapManager.CreateMap().Wait();
@@ -122,7 +123,7 @@ namespace CultureCompass.Navigation
         {
             notificationManager.SendNotification($"Location: kip", "test");
 
-            mainPage.UpdateMap(map);
+            navigationPage.UpdateMap(map);
         }
 
         public void PinClickedGoToDetailPage(Waypoint waypoint)

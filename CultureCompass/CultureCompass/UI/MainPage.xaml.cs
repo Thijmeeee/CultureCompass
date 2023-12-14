@@ -93,14 +93,7 @@ namespace CultureCompass.UI
             
         }
 
-        public void UpdateMap(Map map)
-        {
-            
-            Dispatcher.Dispatch(() =>
-            {
-                Content = map;
-            });
-        }
+       
 
         public void OnStartClicked(object sender, EventArgs e)
         {
