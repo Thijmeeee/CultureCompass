@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Plugin.LocalNotification;
 using Microsoft.Maui.Controls.Hosting;
+using CommunityToolkit.Maui;
 
 namespace CultureCompass
 {
@@ -12,6 +13,7 @@ namespace CultureCompass
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .UseLocalNotification()
                 .ConfigureFonts(fonts =>
                 {
