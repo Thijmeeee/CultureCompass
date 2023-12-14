@@ -7,13 +7,12 @@ namespace CultureCompass.UI;
 
 public partial class NavigationPage : ContentPage
 {
-
+    private RouteManager routeManager;
     public NavigationPage(object route)
 	{
 		InitializeComponent();
 
-        RouteManager routeManager = new RouteManager(this);
-
+        routeManager = new RouteManager(this);
         // TODO Change this to parameter of constructor
         routeManager.SetRoute(new Route()).Wait();
 
@@ -31,7 +30,7 @@ public partial class NavigationPage : ContentPage
 
     public void GoToWaypointPage(Waypoint waypoint)
     {
-        Navigation.PushAsync(new WaypointPage(waypoint));
+        Navigation.PushAsync(new WaypointPage(this, waypoint));
     }
 
     private void StopRouteButton_Clicked(object sender, EventArgs e)
