@@ -30,7 +30,7 @@ public partial class NavigationPage : ContentPage
 
     public void GoToWaypointPage(Waypoint waypoint)
     {
-        Navigation.PushAsync(new WaypointPage(this, waypoint));
+        Navigation.PushAsync(new WaypointPage(waypoint));
     }
 
     private void StopRouteButton_Clicked(object sender, EventArgs e)

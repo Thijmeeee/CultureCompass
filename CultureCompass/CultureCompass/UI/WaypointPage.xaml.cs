@@ -4,11 +4,9 @@ namespace CultureCompass.UI;
 
 public partial class WaypointPage : ContentPage
 {
-	private NavigationPage NavigationPage;
 	private Waypoint currentWaypoint;
-	public WaypointPage(NavigationPage navigationPage, Waypoint waypoint)
+	public WaypointPage(Waypoint waypoint)
 	{
-		NavigationPage = navigationPage;
 		currentWaypoint = waypoint;
         InitializeComponent();
         InitializeValues();
