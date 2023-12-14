@@ -14,11 +14,6 @@ namespace CultureCompass.UI
         {
             InitializeComponent();
 
-            RouteManager routeManager = new RouteManager(this);
-            routeManager.SetRoute(new Route());
-
-            
-
            // TestDatabase();
         }
 
@@ -70,15 +65,15 @@ namespace CultureCompass.UI
             Waypoint newReceived =  _database.ReadWaypoint(1);
             
             //show properties of waypoint object in labels in app
-            waypointid.Text = newReceived.ID.ToString();
-            name.Text = newReceived.Name;
-            yearcreated.Text = newReceived.Year.ToString();
-            picturename.Text = newReceived.ImagePath;
-            infoenglish.Text = newReceived.InfoEnglish;
-            infodutch.Text = newReceived.InfoDutch;
-            infofrench.Text = newReceived.InfoFrench;
-            xcoordinate.Text = newReceived.X.ToString();
-            ycoordinate.Text = newReceived.Y.ToString();
+            //waypointid.Text = newReceived.ID.ToString();
+            //name.Text = newReceived.Name;
+            //yearcreated.Text = newReceived.Year.ToString();
+            //picturename.Text = newReceived.ImagePath;
+            //infoenglish.Text = newReceived.InfoEnglish;
+            //infodutch.Text = newReceived.InfoDutch;
+            //infofrench.Text = newReceived.InfoFrench;
+            //xcoordinate.Text = newReceived.X.ToString();
+            //ycoordinate.Text = newReceived.Y.ToString();
             
             //xaml code:
             // <Label x:Name="waypointid"></Label>

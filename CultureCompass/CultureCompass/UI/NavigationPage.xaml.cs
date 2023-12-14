@@ -13,7 +13,7 @@ public partial class NavigationPage : ContentPage
 		InitializeComponent();
 
         RouteManager routeManager = new RouteManager(this);
-        routeManager.SetRoute(new Route());
+        routeManager.SetRoute(new Route()).Wait();
         //Location location = new Location(51.588431260179476, 4.776480528591496, 17);
         //MapSpan mapSpan = new MapSpan(location, 0.01, 0.01);
 
@@ -41,10 +41,9 @@ public partial class NavigationPage : ContentPage
 
     public void UpdateMap(Map map)
     {
-
         Dispatcher.Dispatch(() =>
         {
-            this.map = map;
+            this.Content = map;
         });
     }
 }

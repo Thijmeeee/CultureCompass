@@ -74,11 +74,11 @@ namespace CultureCompass.Navigation
 
         public void ArrivedAtWaypoint()
         {
-            routeIndex++;
-
-          
 
             //send notification that user is close to waypoint
+            notificationManager.SendNotification(route.waypoints[routeIndex].Name, "test");
+
+            routeIndex++;
 
             if (route.waypoints.Count > routeIndex)
             {
@@ -121,8 +121,6 @@ namespace CultureCompass.Navigation
 
         public void UpdateMap(Map map)
         {
-            notificationManager.SendNotification($"Location: kip", "test");
-
             navigationPage.UpdateMap(map);
         }
 

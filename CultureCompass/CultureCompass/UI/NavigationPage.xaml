@@ -15,9 +15,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
-        <maps:Map x:Name="map" MapType="Street" IsShowingUser="True"
-                  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
+
+        <maps:Map x:Name="map"/>
 
         <Button Text="DetailPage" Clicked="OnTab1Clicked"  Grid.Row="1" Grid.Column="0" Margin="8" BackgroundColor="White" TextColor="Blue"/>
         <Button Text="Tab 2" Clicked="OnTab2Clicked"  Grid.Row="1" Grid.Column="1" Margin="8" BackgroundColor="White" TextColor="Blue"/>
