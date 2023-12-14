@@ -16,6 +16,8 @@ namespace CultureCompass.UI
             RouteManager routeManager = new RouteManager(this);
             routeManager.SetRoute(new Route());
 
+            
+
            // TestDatabase();
         }
 
@@ -42,7 +44,7 @@ namespace CultureCompass.UI
             //create and save new database waypoint object
             _database.CreateWaypoint(waypoint);
             
-            //get/read waypoint object from database by name
+            //get/read waypoint object from database by id
             Waypoint received =  _database.ReadWaypoint(1);
             
             //make database waypoint object
@@ -92,6 +94,7 @@ namespace CultureCompass.UI
 
         public void UpdateMap(Map map)
         {
+            
             Dispatcher.Dispatch(() =>
             {
                 Content = map;

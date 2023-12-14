@@ -1,6 +1,7 @@
 ﻿using CultureCompass.Information;
 using CultureCompass.Notification;
 using CultureCompass.UI;
+using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Devices.Sensors;
 using Map = Microsoft.Maui.Controls.Maps.Map;
 
@@ -122,6 +123,11 @@ namespace CultureCompass.Navigation
             notificationManager.SendNotification($"Location: kip", "test");
 
             mainPage.UpdateMap(map);
+        }
+
+        public void PinClickedGoToDetailPage(Waypoint waypoint)
+        {
+            this.notificationManager.SendNotification("kinker", "hond");
         }
     }
 }

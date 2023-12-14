@@ -9,6 +9,7 @@ namespace CultureCompass.Navigation
     {
         private Map map;
         private Distance mapSize = Distance.FromMeters(50);
+        private Polyline polyline;
         public async Task<Map> CreateMap()
         {
             Location location = await routeManager.GetCurrentLocation();
@@ -40,10 +41,9 @@ namespace CultureCompass.Navigation
                 Location = new Location(waypoint.X, waypoint.Y)
             };
             map.Pins.Add(pin);
+            pin.MarkerClicked += (s, args) => routeManager.PinClickedGoToDetailPage(waypoint);
             routeManager.UpdateMap(map);
         }
-
-        private Polyline polyline;
 
         public void UpdateRouteLine(Location currentLocation)
         {
