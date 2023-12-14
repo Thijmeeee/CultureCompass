@@ -73,10 +73,31 @@
 		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.0-pre20220207221914" />
 		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.0-pre20220207221914" />
 		
+	  <None Remove="Resources\Images\ags_logo.png" />
+	  <None Remove="Resources\Images\vvv_logo.png" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="UI\MapPage.xaml">
+		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="8.0.3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="UI\DetailPage.xaml.cs">
+	    <DependentUpon>DetailPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\NavigationPage.xaml.cs">
+	    <DependentUpon>NavigationPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="UI\NavigationPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\DetailPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="UI\WaypointPage.xaml">

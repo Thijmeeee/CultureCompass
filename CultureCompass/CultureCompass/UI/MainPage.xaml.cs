@@ -3,6 +3,7 @@ using CultureCompass.Information;
 using CultureCompass.Navigation;
 using Microsoft.Maui.Controls.Maps;
 using Map = Microsoft.Maui.Controls.Maps.Map;
+﻿using CultureCompass.UI;
 
 namespace CultureCompass.UI
 {
@@ -99,6 +100,11 @@ namespace CultureCompass.UI
             {
                 Content = map;
             });
+        }
+
+        public void OnStartClicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NavigationPage());
         }
     }
 }
