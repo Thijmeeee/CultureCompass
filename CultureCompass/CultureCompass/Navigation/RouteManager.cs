@@ -126,7 +126,7 @@ namespace CultureCompass.Navigation
 
         public void PinClickedGoToDetailPage(Waypoint waypoint)
         {
-            this.notificationManager.SendNotification("kinker", "hond");
+            navigationPage.GoToWaypointPage(waypoint);
         }
     }
 }
