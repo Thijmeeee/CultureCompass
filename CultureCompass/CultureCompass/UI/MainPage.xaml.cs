@@ -92,7 +92,7 @@ namespace CultureCompass.UI
 
         public void OnStartClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new NavigationPage());
+            Navigation.PushAsync(new ChooseRoutePage());
         }
     }
 }

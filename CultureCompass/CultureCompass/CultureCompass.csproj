@@ -74,6 +74,8 @@
 		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.0-pre20220207221914" />
 		
 	  <None Remove="Resources\Images\ags_logo.png" />
+		
+	  <None Remove="Resources\Images\route_image.png" />
 	  <None Remove="Resources\Images\vvv_logo.png" />
 	</ItemGroup>
 
@@ -94,6 +96,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="UI\ChooseRoutePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="UI\NavigationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

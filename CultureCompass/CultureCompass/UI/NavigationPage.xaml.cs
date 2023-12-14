@@ -8,12 +8,15 @@ namespace CultureCompass.UI;
 public partial class NavigationPage : ContentPage
 {
 
-	public NavigationPage()
+	public NavigationPage(object route)
 	{
 		InitializeComponent();
 
         RouteManager routeManager = new RouteManager(this);
+
+        // TODO Change this to parameter of constructor
         routeManager.SetRoute(new Route()).Wait();
+
         //Location location = new Location(51.588431260179476, 4.776480528591496, 17);
         //MapSpan mapSpan = new MapSpan(location, 0.01, 0.01);
 
@@ -22,28 +25,16 @@ public partial class NavigationPage : ContentPage
         //map.MoveToRegion(mapSpan);
 
     }
-
-    public void OnTab1Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new DetailPage());
-
-    }
-
-    public void OnTab2Clicked(object sender, EventArgs e)
-    {
-        
-    }
-
-    public void OnTab3Clicked(object sender, EventArgs e)
-    {
-
-    }
-
     public void UpdateMap(Map map)
     {
-        Dispatcher.Dispatch(() =>
-        {
-            this.Content = map;
-        });
+        //Dispatcher.Dispatch(() =>
+        //{
+        //    this.map = map;
+        //});
+    }
+
+    private void StopRouteButton_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new MainPage());
     }
 }
