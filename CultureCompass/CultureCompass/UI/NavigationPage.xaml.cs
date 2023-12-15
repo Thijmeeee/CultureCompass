@@ -14,13 +14,6 @@ public partial class NavigationPage : ContentPage
 
         RouteManager routeManager = new RouteManager(this);
         routeManager.SetRoute(new Route()).Wait();
-        //Location location = new Location(51.588431260179476, 4.776480528591496, 17);
-        //MapSpan mapSpan = new MapSpan(location, 0.01, 0.01);
-
-        //map.IsShowingUser = true;
-        //map.Pins.Add(new Pin() { Location = location, Label = "Avans Hogeschool"});
-        //map.MoveToRegion(mapSpan);
-
     }
 
     public void OnTab1Clicked(object sender, EventArgs e)

@@ -7,6 +7,10 @@ namespace CultureCompass.Navigation
     internal class LocationListener(RouteManager routeManager, MapManager mapManager)
     {
         private double distanceThreshold = 20;
+        private Thread updateRouteLineThread;
+
+        private Location lastLocation;
+        private bool running = false;
 
         public async void StartListening()
         {
@@ -25,16 +29,28 @@ namespace CultureCompass.Navigation
                 // Unable to start listening for location changes
             }
 
-            Thread thread = new Thread(() =>
+            updateRouteLineThread = new Thread(() =>
             {
-                Thread.Sleep(1000);
-                StopListening();
+                running = true;
+                while (running)
+                {
+                    if (lastLocation != null)
+                    {
+                        //wait 15 seconds to minimize API calls
+                        Device.InvokeOnMainThreadAsync(() =>
+                        {
+                            mapManager.UpdateRouteLine(lastLocation);
+                        });
+                        Thread.Sleep(15000);
+                    }
+                }
             });
-            thread.Start();
+            updateRouteLineThread.Start();
         }
 
         public void StopListening()
         {
+            running = false;
             try
             {
                 Geolocation.LocationChanged -= Geolocation_LocationChanged;
@@ -47,22 +63,23 @@ namespace CultureCompass.Navigation
             }
         }
 
+
         private void Geolocation_LocationChanged(object sender, GeolocationLocationChangedEventArgs e)
         {
-            mapManager.UpdateRouteLine(e.Location);
-            mapManager.CenterMap(e.Location);
+            lastLocation = e.Location;
+            mapManager.CenterMap(lastLocation);
 
             Location currentWaypoint = routeManager.GetWaypointLocation();
             if (currentWaypoint != null)
             {
                 Distance distance = Distance.BetweenPositions(e.Location, currentWaypoint);
 
-                string text = "distance to waypoint: " + distance.Meters + "m";
-                ToastDuration duration = ToastDuration.Short;
-                double fontSize = 14;
+                //string text = "distance to waypoint: " + distance.Meters + "m";
+                //ToastDuration duration = ToastDuration.Short;
+                //double fontSize = 14;
 
-                var toast = Toast.Make(text, duration, fontSize);
-                toast.Show();
+                //var toast = Toast.Make(text, duration, fontSize);
+                //toast.Show();
 
                 if (distance.Meters <= distanceThreshold)
                 {

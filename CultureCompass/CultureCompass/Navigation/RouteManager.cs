@@ -33,7 +33,9 @@ namespace CultureCompass.Navigation
             this.mapManager = new MapManager(this);
             mapManager.CreateMap().Wait();
 
+
             this.locationListener = new LocationListener(this, mapManager);
+            locationListener.StartListening();
 
             this.notificationManager = new NotificationManager();
             this.notificationManager.NotificationType = new PushNotification();
@@ -86,7 +88,7 @@ namespace CultureCompass.Navigation
             else
             {
                 //end of route
-                //locationListener.StopListening();
+                locationListener.StopListening();
             }
         }
 
@@ -114,7 +116,6 @@ namespace CultureCompass.Navigation
         private async Task RouteToNextPoint()
         {
             Waypoint waypoint = route.waypoints[routeIndex];
-            locationListener.StartListening();
 
             mapManager.AddWaypointPin(waypoint);
         }
