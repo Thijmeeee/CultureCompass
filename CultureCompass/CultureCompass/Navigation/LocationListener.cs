@@ -13,7 +13,7 @@ namespace CultureCompass.Navigation
             try
             {
                 Geolocation.LocationChanged += Geolocation_LocationChanged;
-                var request = new GeolocationListeningRequest(GeolocationAccuracy.High);
+                var request = new GeolocationListeningRequest(GeolocationAccuracy.Best);
                 var success = await Geolocation.StartListeningForegroundAsync(request);
 
                 string status = success
@@ -24,6 +24,13 @@ namespace CultureCompass.Navigation
             {
                 // Unable to start listening for location changes
             }
+
+            Thread thread = new Thread(() =>
+            {
+                Thread.Sleep(1000);
+                StopListening();
+            });
+            thread.Start();
         }
 
         public void StopListening()

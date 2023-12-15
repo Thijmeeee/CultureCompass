@@ -24,6 +24,7 @@ namespace CultureCompass.Navigation
                     foreach (Step step in leg.Steps)
                     {
                         polyline.Add(new Location(step.StartLocation.Lat, step.StartLocation.Lng));
+                        polyline.Add(new Location(step.EndLocation.Lat, step.EndLocation.Lng));
                     }
                 }
             }

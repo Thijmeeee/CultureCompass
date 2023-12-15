@@ -31,7 +31,7 @@ namespace CultureCompass.API
 
         public string GetData()
         {
-            return $"?destination={destination}&origin={origin}&key={apiKey}&mode=bicycling";
+            return $"?destination={destination}&origin={origin}&key={apiKey}&mode=walking";
         }
     }
 }
