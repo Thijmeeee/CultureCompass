@@ -21,7 +21,16 @@
 
         private List<Waypoint> InitWaypoints()
         {
-            return databaseManager.GetAllWaypoints();
+            List<Waypoint> waypoints = new List<Waypoint>();
+            for (int i = 0; i < 10; i++)
+            {
+                databaseManager.GetWaypoint(i);
+            }
+
+            // return databaseManager.GetAllWayPoints();
+
+
+            return waypoints;
         }
 
 

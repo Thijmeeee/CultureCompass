@@ -4,7 +4,12 @@ namespace CultureCompass.Information
 {
     internal class DatabaseManager
     {
-        public Database.Database database {  get; set; }
+        private Database.Database database;
+
+        public DatabaseManager()
+        {
+            database = new Database.Database();
+        }
 
         public Waypoint GetWaypoint(int pointId)
         {

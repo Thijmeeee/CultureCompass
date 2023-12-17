@@ -22,6 +22,7 @@ namespace CultureCompass.Database
         {
             if (point != null)
             {
+
                 WaypointTable waypoint = new WaypointTable()
                 {
                     WaypointId = point.ID,
