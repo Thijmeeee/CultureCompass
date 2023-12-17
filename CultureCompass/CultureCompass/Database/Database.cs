@@ -9,7 +9,7 @@ namespace CultureCompass.Database
         private const string _databasePath = "database.db";
         public Database()
         {
-            string applicationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "DatabaseFile");
+            string applicationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "CultureCompassDatabaseFile");
             Directory.CreateDirectory(applicationFolderPath);
 
             string databaseFileName = Path.Combine(applicationFolderPath, _databasePath);
