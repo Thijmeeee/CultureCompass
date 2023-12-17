@@ -22,11 +22,6 @@ namespace CultureCompass.UI
             // TestDatabase();
         }
 
-        public void OnStartClicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new NavigationPage());
-        }
-
         private void LoadWaypointsIntoDatabase()
         {
             Waypoint waypoint1 = new Waypoint()
@@ -247,7 +242,13 @@ namespace CultureCompass.UI
 
         public void OnStartClicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new ChooseRoutePage());
+            RouteCollection routeCollection = new RouteCollection();
+            var routes = routeCollection.routes;
+
+            ChooseRoutePage chooseRoutePage = new ChooseRoutePage();
+            chooseRoutePage.BindingContext = routes;
+
+            Navigation.PushAsync(chooseRoutePage);
         }
     }
 }

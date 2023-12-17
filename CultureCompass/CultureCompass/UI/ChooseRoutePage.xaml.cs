@@ -1,32 +1,15 @@
+using CultureCompass.Information;
+
 namespace CultureCompass.UI;
 
 public partial class ChooseRoutePage : ContentPage
 {
+
 	public ChooseRoutePage()
 	{
 		InitializeComponent();
-		InitializeCollectionView();
-	}
-
-
-	public void InitializeCollectionView()
-	{
-		collectionView.ItemsSource = new List<string>
-		{
-			"kip",
-			"test1",
-			"test2",
-            "kip",
-            "test1",
-            "test2",
-            "kip",
-            "test1",
-            "test2",
-            "test3"
-        };
-
-		StartRouteButton.IsEnabled = false;
-	}
+        StartRouteButton.IsEnabled = false;
+    }
 
 	public void OnRouteStartedClicked(object sender, EventArgs e)
 	{

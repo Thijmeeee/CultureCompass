@@ -11,7 +11,7 @@ namespace CultureCompass.Information
             return database.ReadWaypoint(pointId);
         }
 
-        public List<Waypoint> GetAllWaypoints(int pointId)
+        public List<Waypoint> GetAllWaypoints()
         {
             return database.ReadWaypoints();
         }

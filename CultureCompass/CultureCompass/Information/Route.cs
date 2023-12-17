@@ -1,9 +1,18 @@
-﻿using Microsoft.Maui.Controls.Maps;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using Microsoft.Maui.Controls.Maps;
 
 namespace CultureCompass.Information
 {
-    internal class Route
+    public partial class Route : ObservableObject
     {
-        public List<Waypoint> waypoints { get; set; } = new List<Waypoint>();
+        [ObservableProperty]
+        public List<Waypoint> waypoints = new List<Waypoint>();
+
+        [ObservableProperty]
+        public string name;
+
+        [ObservableProperty]
+        public double distance;
+        
     }
 }

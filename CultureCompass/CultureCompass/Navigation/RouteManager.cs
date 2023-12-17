@@ -75,8 +75,6 @@ namespace CultureCompass.Navigation
 
         public void ArrivedAtWaypoint()
         {
-
-            //send notification that user is close to waypoint
             notificationManager.SendNotification(route.waypoints[routeIndex].Name, "test");
 
             routeIndex++;

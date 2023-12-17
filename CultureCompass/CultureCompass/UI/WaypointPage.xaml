@@ -4,7 +4,7 @@
              x:Class="CultureCompass.UI.WaypointPage"
              Title="Informatie over ..">
     <VerticalStackLayout>
-        <Image WidthRequest="250" HeightRequest="250"></Image>
+        <Image x:Name="ImageWaypoint" WidthRequest="250" HeightRequest="250"></Image>
 
         <Label Text="Informatie" FontSize="Title" TextColor="Black" Margin="20,0,0,0"></Label>
         <Label x:Name="DescriptionLabel" Text="Omschrijving hier" FontSize="Default" TextColor="Black" Margin="20,0,0,0"></Label>
