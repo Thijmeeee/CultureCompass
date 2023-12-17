@@ -15,7 +15,6 @@ public partial class NavigationPage : ContentPage
         routeManager = new RouteManager(this);
         // TODO Change this to parameter of constructor
         routeManager.SetRoute(new Route()).Wait();
-
     }
     public void UpdateMap(Map newMap)
     {

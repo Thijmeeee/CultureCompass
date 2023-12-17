@@ -33,6 +33,7 @@ namespace CultureCompass.Navigation
             this.mapManager = new MapManager(this);
             mapManager.CreateMap().Wait();
 
+
             this.locationListener = new LocationListener(this, mapManager);
             locationListener.StartListening();
 

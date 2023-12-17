@@ -1,4 +1,6 @@
-﻿using CultureCompass.Information;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CultureCompass.Information;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using Map = Microsoft.Maui.Controls.Maps.Map;
@@ -10,6 +12,7 @@ namespace CultureCompass.Navigation
         private Map map;
         private Distance mapSize = Distance.FromMeters(50);
         private Polyline polyline;
+        private RouteLine routeLine = new();
         public async Task<Map> CreateMap()
         {
             Location location = await routeManager.GetCurrentLocation();
@@ -45,21 +48,16 @@ namespace CultureCompass.Navigation
             routeManager.UpdateMap(map);
         }
 
-        public void UpdateRouteLine(Location currentLocation)
+        public async void UpdateRouteLine(Location currentLocation)
         {
             map.MapElements.Remove(polyline);
             Location waypointLocation = routeManager.GetWaypointLocation();
 
-            polyline = new Polyline
-            {
-                StrokeColor = Colors.Blue,
-                StrokeWidth = 12,
-                Geopath =
-                {
-                    currentLocation,
-                    waypointLocation,
-                }
-            };
+            string origin = currentLocation.Latitude + "," + currentLocation.Longitude;
+            string destination = waypointLocation.Latitude + "," + waypointLocation.Longitude;
+
+            polyline = await routeLine.GetRouteLine(origin, destination);
+
             map.MapElements.Add(polyline);
             routeManager.UpdateMap(map);
         }
