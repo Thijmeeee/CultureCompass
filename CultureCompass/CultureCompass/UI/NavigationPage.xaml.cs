@@ -7,14 +7,12 @@ namespace CultureCompass.UI;
 
 public partial class NavigationPage : ContentPage
 {
-    private RouteManager routeManager;
-    public NavigationPage(object route)
+    public NavigationPage(Route route)
 	{
 		InitializeComponent();
 
-        routeManager = new RouteManager(this);
-        // TODO Change this to parameter of constructor
-        routeManager.SetRoute(new Route()).Wait();
+        RouteManager routeManager = new RouteManager(this);
+        routeManager.SetRoute(route).Wait();
     }
     public void UpdateMap(Map newMap)
     {

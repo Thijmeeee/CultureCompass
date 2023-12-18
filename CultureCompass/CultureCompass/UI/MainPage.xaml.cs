@@ -17,7 +17,7 @@ namespace CultureCompass.UI
             //RouteManager routeManager = new RouteManager(new NavigationPage());
             //routeManager.SetRoute(new Route());
 
-            LoadWaypointsIntoDatabase();
+           // LoadWaypointsIntoDatabase();
 
             // TestDatabase();
         }
@@ -242,8 +242,6 @@ namespace CultureCompass.UI
         {
             RouteCollection routeCollection = new RouteCollection();
             var routes = routeCollection.routes;
-
-
 
             ChooseRoutePage chooseRoutePage = new ChooseRoutePage();
             chooseRoutePage.BindingContext = routes;

@@ -13,7 +13,7 @@ public partial class ChooseRoutePage : ContentPage
 
 	public void OnRouteStartedClicked(object sender, EventArgs e)
 	{
-		Navigation.PushAsync(new NavigationPage(collectionView.SelectedItem));
+		Navigation.PushAsync(new NavigationPage((Route)collectionView.SelectedItem));
 	}
 
     private void collectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
