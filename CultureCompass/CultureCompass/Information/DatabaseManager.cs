@@ -13,7 +13,20 @@ namespace CultureCompass.Information
 
         public Waypoint GetWaypoint(int pointId)
         {
-            return database.ReadWaypoint(pointId);
+            WaypointTable waypointTable = database.ReadWaypoint(pointId);
+
+            return new Waypoint()
+            {
+                ID = waypointTable.WaypointId,
+                X = waypointTable.XCoordinate,
+                Y = waypointTable.YCoordinate,
+                Name = waypointTable.Name,
+                Year = waypointTable.YearCreated,
+                ImagePath = waypointTable.PictureName,
+                InfoDutch = waypointTable.InfoDutch,
+                InfoEnglish = waypointTable.InfoEnglish,
+                InfoFrench = waypointTable.InfoFrench
+            };
         }
 
         public List<Waypoint> GetAllWaypoints()

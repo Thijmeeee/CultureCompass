@@ -39,9 +39,10 @@ namespace CultureCompass.Database
             }
         }
 
-        public Waypoint ReadWaypoint(int pointId)
+        public WaypointTable ReadWaypoint(int pointId)
         {
-            return _connection.FindWithQuery<Waypoint>("SELECT * FROM WaypointTable WHERE [WaypointId] = ?", pointId);
+            var waypoint = from w in _connection.Table<WaypointTable>() where w.WaypointId == pointId select w;
+            return waypoint.FirstOrDefault();
         }
 
         public List<Waypoint> ReadWaypoints()
