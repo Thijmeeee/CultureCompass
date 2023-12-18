@@ -6,7 +6,7 @@
              x:Class="CultureCompass.UI.ChooseRoutePage"
              Shell.BackgroundColor="Blue"
              Shell.TitleColor="White"
-             Title="Kies een route">
+             Title="Choose a route">
 
     <Grid>
         <Grid.RowDefinitions>

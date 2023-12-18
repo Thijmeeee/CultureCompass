@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
-             x:Class="CultureCompass.UI.NavigationPage">
+             x:Class="CultureCompass.UI.NavigationPage"
+             Shell.BackgroundColor="Blue"
+             Shell.TitleColor="White">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -11,20 +13,18 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         
-        <StackLayout x:Name="stacklayout" HeightRequest="600" Grid.Row="1">
+        <StackLayout x:Name="stacklayout" Grid.Row="1">
         <maps:Map x:Name="mapNavigation"/>
         </StackLayout>
-        
+
         <VerticalStackLayout Grid.Row="2">
             <HorizontalStackLayout Margin="20">
                 <Label Text="Distance:" FontSize="Medium" FontAttributes="Bold"/>
                 <Label x:Name="DistanceLabel" Margin="20,0,0,0" Text="Text here" FontSize="Medium" FontAttributes="Bold"/>
             </HorizontalStackLayout>
-           
+
             <Button x:Name="StopRouteButton" Text="Stop Route" Clicked="StopRouteButton_Clicked" Margin="20" BackgroundColor="Red" TextColor="Black" FontSize="Medium" FontAttributes="Bold"/>
         </VerticalStackLayout>
-       
-
     </Grid>
 </ContentPage>
 
