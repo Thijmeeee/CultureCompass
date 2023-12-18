@@ -11,7 +11,7 @@ namespace CultureCompass.Navigation
         {
             APIResponse result = await apiManager.WriteData(origin, destination);
 
-            Polyline polyline = new Polyline()
+            Polyline polyline = new Polyline
             {
                 StrokeColor = Colors.Blue,
                 StrokeWidth = 12

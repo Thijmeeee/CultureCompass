@@ -41,7 +41,7 @@ namespace CultureCompass.Navigation
             {
                 Label = waypoint.Name,
                 Type = PinType.Place,
-                Location = new Location(waypoint.X, waypoint.Y)
+                Location = new Location(waypoint.Y, waypoint.X)
             };
             map.Pins.Add(pin);
             pin.MarkerClicked += (s, args) => routeManager.PinClickedGoToDetailPage(waypoint);
@@ -51,6 +51,7 @@ namespace CultureCompass.Navigation
         public async void UpdateRouteLine(Location currentLocation)
         {
             map.MapElements.Remove(polyline);
+
             Location waypointLocation = routeManager.GetWaypointLocation();
 
             string origin = currentLocation.Latitude + "," + currentLocation.Longitude;

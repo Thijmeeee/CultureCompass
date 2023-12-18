@@ -64,7 +64,7 @@ namespace CultureCompass.Navigation
             try
             {
                 Waypoint waypoint = route.waypoints[routeIndex];
-                return new Location(waypoint.X, waypoint.Y);
+                return new Location(waypoint.Y, waypoint.X);
             }
             catch (Exception e)
             {

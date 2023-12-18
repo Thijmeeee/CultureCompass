@@ -5,7 +5,7 @@ namespace CultureCompass.API
 {
     internal class APIResponse
     {
-        [JsonProperty("routeList")]
+        [JsonProperty("routes")]
         public List<Route> Routes { get; set; }
     }
 
