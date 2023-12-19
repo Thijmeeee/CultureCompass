@@ -58,6 +58,7 @@ namespace CultureCompass.Navigation
 
             polyline = await routeLine.GetRouteLine(origin, destination);
 
+            routeManager.UpdateDistance(new Distance(routeLine.Distance));
             map.MapElements.Add(polyline);
             routeManager.UpdateMap(map);
         }

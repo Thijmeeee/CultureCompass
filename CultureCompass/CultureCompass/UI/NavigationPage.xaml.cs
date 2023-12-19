@@ -3,16 +3,23 @@ using Microsoft.Maui.Controls.Maps;
 using Map = Microsoft.Maui.Controls.Maps.Map;
 using CultureCompass.Information;
 using CultureCompass.Navigation;
+using CultureCompass.API;
+using Distance = Microsoft.Maui.Maps.Distance;
 namespace CultureCompass.UI;
 
 public partial class NavigationPage : ContentPage
 {
-    public NavigationPage(Route route)
+    public NavigationPage(Information.Route route)
 	{
 		InitializeComponent();
 
         RouteManager routeManager = new RouteManager(this);
         routeManager.SetRoute(route).Wait();
+    }
+
+    public void UpdateDistance(Distance distance)
+    {
+        DistanceLabel.Text = $"{distance.Kilometers} km";
     }
     public void UpdateMap(Map newMap)
     {

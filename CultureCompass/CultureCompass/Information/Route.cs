@@ -12,7 +12,7 @@ namespace CultureCompass.Information
         public string name;
 
         [ObservableProperty]
-        public double distance;
-        
+        public int totalWaypoints;
+
     }
 }

@@ -3,6 +3,7 @@ using CultureCompass.Notification;
 using CultureCompass.UI;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Devices.Sensors;
+using Microsoft.Maui.Maps;
 using Map = Microsoft.Maui.Controls.Maps.Map;
 using NavigationPage = CultureCompass.UI.NavigationPage;
 
@@ -106,6 +107,11 @@ namespace CultureCompass.Navigation
         private async Task RouteToNextPoint()
         {
             Waypoint waypoint = route.waypoints[routeIndex];
+        }
+
+        public void UpdateDistance(Distance distance)
+        {
+            navigationPage.UpdateDistance(distance);
         }
 
         public void UpdateMap(Map map)
