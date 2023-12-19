@@ -27,7 +27,6 @@ namespace CultureCompass.Navigation
             map = new Map(mapSpan)
             {
                 MapType = MapType.Street,
-                IsTrafficEnabled = true,
                 IsScrollEnabled = true,
                 IsZoomEnabled = true,
                 IsShowingUser = true,
