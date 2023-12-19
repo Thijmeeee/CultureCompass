@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Plugin.LocalNotification;
-using Microsoft.Maui.Controls.Hosting;
 
 namespace CultureCompass
 {

@@ -1,3 +1,4 @@
+using System.Resources;
 using CultureCompass.Information;
 
 namespace CultureCompass.UI;
@@ -17,7 +18,7 @@ public partial class WaypointPage : ContentPage
 		Title = $"Informatie over {currentWaypoint.Name}";
 		ImageWaypoint.Source = currentWaypoint.ImagePath;
 		BuildYearLabel.Text = currentWaypoint.Year.ToString();
-		DescriptionLabel.Text = currentWaypoint.InfoEnglish;
+        DescriptionLabel.Text = currentWaypoint.InfoEnglish;
 	}
 
 	public void BackToRouteButton_Clicked(object sender, EventArgs e)
