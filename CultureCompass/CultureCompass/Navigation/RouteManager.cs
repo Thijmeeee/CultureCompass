@@ -94,28 +94,18 @@ namespace CultureCompass.Navigation
         {
             this.routeIndex = 0;
             this.route = route;
-            if (route.waypoints.Count == 0)
+
+            foreach (Waypoint waypoint in route.waypoints)
             {
-                //test code, can be removed later
-                route.waypoints = new List<Waypoint>()
-                {
-                    new()
-                    {
-                        ID = 0,
-                        X = 51.58903179679572,
-                        Y = 4.775741802339474,
-                        Name = "Test"
-                    }
-                };
+                mapManager.AddWaypointPin(waypoint);
             }
+
             await RouteToNextPoint();
         }
 
         private async Task RouteToNextPoint()
         {
             Waypoint waypoint = route.waypoints[routeIndex];
-
-            mapManager.AddWaypointPin(waypoint);
         }
 
         public void UpdateMap(Map map)
