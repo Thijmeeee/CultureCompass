@@ -18,6 +18,7 @@ namespace CultureCompass.UI
             //routeManager.SetRoute(new Route());
 
             _database = new DatabaseManager();
+            
             if (_database.GetAllWaypoints().Count == 0)
                 LoadWaypointsIntoDatabase();
 
@@ -42,8 +43,8 @@ namespace CultureCompass.UI
             Waypoint waypoint2 = new Waypoint()
             {
                 ID = 2,
-                X = 3.824452,
-                Y = 50.889297,
+                X = 4.776182,
+                Y = 51.590921,
                 Name = "Kasteel van Breda",
                 Year = 1353,
                 ImagePath = "kasteel_van_breda.jpg",

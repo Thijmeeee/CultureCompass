@@ -76,7 +76,7 @@ namespace CultureCompass.Navigation
 
         public void ArrivedAtWaypoint()
         {
-            notificationManager.SendNotification(route.waypoints[routeIndex].Name, "test");
+            notificationManager.SendNotification(route.waypoints[routeIndex].Name, route.waypoints[routeIndex].InfoEnglish);
 
             routeIndex++;
 

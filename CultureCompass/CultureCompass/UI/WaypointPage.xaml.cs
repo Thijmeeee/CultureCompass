@@ -15,7 +15,7 @@ public partial class WaypointPage : ContentPage
 
 	public void InitializeValues()
 	{
-		Title = $"Informatie over {currentWaypoint.Name}";
+		Title = currentWaypoint.Name;
 		ImageWaypoint.Source = currentWaypoint.ImagePath;
 		BuildYearLabel.Text = currentWaypoint.Year.ToString();
         DescriptionLabel.Text = currentWaypoint.InfoEnglish;

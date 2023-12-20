@@ -26,7 +26,7 @@ namespace CultureCompass.Information
 
             Route route2 = new Route
             {
-                Name = "Route naar ValkenBerg Park Breda",
+                Name = "Route naar ValkenBerg Park",
                 waypoints = new List<Waypoint>
                 {
                 waypoints[0],
@@ -38,7 +38,7 @@ namespace CultureCompass.Information
 
             Route route3 = new Route
             {
-                Name = "Route naar Begijnhof Route",
+                Name = "Route naar Begijnhof",
                 waypoints = new List<Waypoint>
                 {
                 waypoints[0],
@@ -52,7 +52,7 @@ namespace CultureCompass.Information
 
             Route route4 = new Route
             {
-                Name = "Route naar Stedelijk Museum Breda",
+                Name = "Route naar Stedelijk Museum",
                 waypoints = new List<Waypoint>
                 {
                 waypoints[0],
@@ -69,7 +69,7 @@ namespace CultureCompass.Information
 
             Route route5 = new Route
             {
-                Name = "Route naar Maczek Morial Breda",
+                Name = "Route naar Maczek Morial",
                 waypoints = new List<Waypoint>
                 {
                 waypoints[0],

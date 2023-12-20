@@ -22,7 +22,7 @@ namespace CultureCompass.Notification
                 BadgeNumber = 42,
                 Schedule = new NotificationRequestSchedule
                 {
-                    NotifyTime = DateTime.Now.AddSeconds(5),
+                    NotifyTime = DateTime.Now,
                 },
                 Android = new AndroidOptions
                 {

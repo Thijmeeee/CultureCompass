@@ -9,6 +9,7 @@ namespace CultureCompass.Information
         public DatabaseManager()
         {
             database = new Database.Database();
+ 
         }
 
         public Waypoint GetWaypoint(int pointId)

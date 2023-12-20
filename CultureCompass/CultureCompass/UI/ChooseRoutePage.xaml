@@ -5,7 +5,7 @@
              xmlns:UI="clr-namespace:CultureCompass.UI"
              x:DataType="routes:Routes"
              x:Class="CultureCompass.UI.ChooseRoutePage"
-             Shell.BackgroundColor="Blue"
+             Shell.BackgroundColor="#013B8D"
              Shell.TitleColor="White"
              Title="Choose a route">
 
@@ -45,6 +45,6 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
 
-        <Button x:Name="StartRouteButton" Text="Start Route" Clicked="OnRouteStartedClicked" Margin="20" BackgroundColor="Red" TextColor="Black" FontSize="Medium" FontAttributes="Bold" VerticalOptions="End" />
+        <Button x:Name="StartRouteButton" Text="Start Route" Clicked="OnRouteStartedClicked" Margin="20" BackgroundColor="#013B8D" TextColor="White" FontSize="Medium" FontAttributes="Bold" VerticalOptions="End" />
     </Grid>
 </ContentPage>
