@@ -79,5 +79,10 @@ namespace CultureCompass.Database
         {
             _connection.Close();
         }
+
+        internal void DeleteAllWaypoints()
+        {
+            _connection.DeleteAll<WaypointTable>();
+        }
     }
 }
