@@ -4,13 +4,13 @@ using Microsoft.Maui.Maps;
 
 namespace CultureCompass.Navigation
 {
-    internal class LocationListener(RouteManager routeManager, MapManager mapManager)
+    public class LocationListener(RouteManager routeManager, MapManager mapManager)
     {
         private double distanceThreshold = 20;
         private Thread updateRouteLineThread;
 
         private Location lastLocation;
-        private bool running = false;
+        private bool running;
 
         public async void StartListening()
         {
@@ -48,6 +48,11 @@ namespace CultureCompass.Navigation
             updateRouteLineThread.Start();
         }
 
+        public bool GetRunning()
+        {
+            return this.running;
+        }
+
         public void StopListening()
         {
             running = false;
@@ -55,7 +60,6 @@ namespace CultureCompass.Navigation
             {
                 Geolocation.LocationChanged -= Geolocation_LocationChanged;
                 Geolocation.StopListeningForeground();
-                string status = "Stopped listening for foreground location updates";
             }
             catch (Exception ex)
             {

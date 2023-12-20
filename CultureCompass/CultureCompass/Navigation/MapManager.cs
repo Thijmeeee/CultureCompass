@@ -7,7 +7,7 @@ using Map = Microsoft.Maui.Controls.Maps.Map;
 
 namespace CultureCompass.Navigation
 {
-    internal class MapManager(RouteManager routeManager)
+    public class MapManager(RouteManager routeManager)
     {
         private Map map;
         private Distance mapSize = Distance.FromMeters(50);
