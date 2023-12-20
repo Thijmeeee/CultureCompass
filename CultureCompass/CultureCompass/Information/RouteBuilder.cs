@@ -20,9 +20,9 @@ namespace CultureCompass.Information
                 {
                 waypoints[0],
                 waypoints[1]
-                },
-                TotalWaypoints = 2
+                }
             };
+            route1.TotalWaypoints = route1.waypoints.Count;
 
             Route route2 = new Route
             {
@@ -32,9 +32,9 @@ namespace CultureCompass.Information
                 waypoints[0],
                 waypoints[1],
                 waypoints[2],
-                },
-                TotalWaypoints = 3
+                }
             };
+            route2.TotalWaypoints = route2.waypoints.Count;
 
             Route route3 = new Route
             {
@@ -46,9 +46,9 @@ namespace CultureCompass.Information
                 waypoints[2],
                 waypoints[3],
                 waypoints[4],
-                },
-                TotalWaypoints = 5
+                }
             };
+            route3.TotalWaypoints = route3.waypoints.Count;
 
             Route route4 = new Route
             {
@@ -62,9 +62,9 @@ namespace CultureCompass.Information
                 waypoints[4],
                 waypoints[5],
                 waypoints[6],
-                },
-                TotalWaypoints = 7
+                }
             };
+            route4.TotalWaypoints = route4.waypoints.Count;
 
 
             Route route5 = new Route
@@ -82,9 +82,9 @@ namespace CultureCompass.Information
                 waypoints[7],
                 waypoints[8],
                 waypoints[9],
-                },
-                TotalWaypoints = 10
+                }
             };
+            route5.TotalWaypoints = route5.waypoints.Count;
 
             routes.Add(route1);
             routes.Add(route2);
