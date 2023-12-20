@@ -7,8 +7,9 @@ using Plugin.LocalNotification;
 
 namespace CultureCompass.Notification
 {
-    internal interface INotificationType
+    public interface INotificationType
     {
         void SendNotification(string text, string description);
+        bool IsPermissionGranted();
     }
 }

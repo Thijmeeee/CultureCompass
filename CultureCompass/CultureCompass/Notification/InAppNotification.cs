@@ -11,8 +11,9 @@ using Plugin.LocalNotification;
 
 namespace CultureCompass.Notification
 {
-    internal class InAppNotification : INotificationType
+    public class InAppNotification : INotificationType
     {
+     
         public void SendNotification(string title, string description)
         {
             var snackbar = Snackbar.Make(title, null,"OK",TimeSpan.FromSeconds(5), new SnackbarOptions
@@ -23,5 +24,11 @@ namespace CultureCompass.Notification
             });
             snackbar.Show();
         }
+
+        public bool IsPermissionGranted()
+        {
+            return true;
+        }
+
     }
 }
