@@ -35,6 +35,11 @@ namespace CultureCompass.Information
             return database.ReadWaypoints();
         }
 
+        public void DeleteAddWaypoints()
+        {
+            database.DeleteAllWaypoints();
+        }
+
         public void AddWaypoint(Waypoint point)
         {
             database.CreateWaypoint(point);
@@ -61,8 +66,5 @@ namespace CultureCompass.Information
             };
             database.UpdateWaypoint(updatedReceived);
         }
-
-        
-
     }
 }
