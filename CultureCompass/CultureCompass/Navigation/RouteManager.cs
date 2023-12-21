@@ -16,7 +16,7 @@ using NavigationPage = CultureCompass.UI.NavigationPage;
 
 namespace CultureCompass.Navigation
 {
-    internal class RouteManager
+    public class RouteManager
     {
         private NavigationPage navigationPage;
         private LocationListener locationListener;
@@ -48,7 +48,7 @@ namespace CultureCompass.Navigation
             {
                 Location location = await Geolocation.Default.GetLastKnownLocationAsync();
 
-                
+
 
                 if (location != null)
                     return location;
@@ -76,23 +76,31 @@ namespace CultureCompass.Navigation
 
         public void ArrivedAtWaypoint()
         {
-            notificationManager.SendNotification(route.waypoints[routeIndex].Name, route.waypoints[routeIndex].InfoEnglish);
+            if (route.waypoints[routeIndex] != null)
+                notificationManager.SendNotification(route.waypoints[routeIndex].Name, route.waypoints[routeIndex].InfoEnglish);
 
             routeIndex++;
 
-            if (route.waypoints.Count > routeIndex)
-            {
-                RouteToNextPoint().Wait();
-            }
-            else
+            if (route.waypoints.Count <= routeIndex)
             {
                 //end of route
                 locationListener.StopListening();
             }
         }
 
+        public LocationListener GetLocationListener()
+        {
+            return this.locationListener;
+        }
+
+        public Route GetRoute()
+        {
+            return this.route;
+        }
+
         public async Task SetRoute(Route route)
         {
+            if (route == null || route.waypoints == null) return;
             this.routeIndex = 0;
             this.route = route;
 
@@ -100,13 +108,6 @@ namespace CultureCompass.Navigation
             {
                 mapManager.AddWaypointPin(waypoint);
             }
-
-            await RouteToNextPoint();
-        }
-
-        private async Task RouteToNextPoint()
-        {
-            Waypoint waypoint = route.waypoints[routeIndex];
         }
 
         public void UpdateDistance(Distance distance)
