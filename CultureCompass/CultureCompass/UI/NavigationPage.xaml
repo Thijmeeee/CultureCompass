@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+             x:Class="CultureCompass.UI.NavigationPage"
+             Shell.BackgroundColor="#013B8D"
+             Shell.TitleColor="White"
+             Title="Maps">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        
+        <StackLayout x:Name="stacklayout" Grid.Row="1">
+        <maps:Map x:Name="mapNavigation"/>
+        </StackLayout>
+
+        <VerticalStackLayout Grid.Row="2">
+            <HorizontalStackLayout Margin="20">
+                <Label Text="Distance left to next waypoint:" FontSize="16" FontAttributes="Bold"/>
+                <Label x:Name="DistanceLabel" Margin="10,0,0,0" FontSize="16" FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+
+            <Button x:Name="StopRouteButton" Text="Stop Route" Clicked="StopRouteButton_Clicked" Margin="20,0,20,20" BackgroundColor="#013B8D" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
+

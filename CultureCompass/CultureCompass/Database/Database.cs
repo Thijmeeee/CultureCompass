@@ -9,7 +9,7 @@ namespace CultureCompass.Database
         private const string _databasePath = "database.db";
         public Database()
         {
-            string applicationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "DatabaseFile");
+            string applicationFolderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "CultureCompassDatabaseFile");
             Directory.CreateDirectory(applicationFolderPath);
 
             string databaseFileName = Path.Combine(applicationFolderPath, _databasePath);
@@ -22,6 +22,7 @@ namespace CultureCompass.Database
         {
             if (point != null)
             {
+
                 WaypointTable waypoint = new WaypointTable()
                 {
                     WaypointId = point.ID,
@@ -38,9 +39,10 @@ namespace CultureCompass.Database
             }
         }
 
-        public Waypoint ReadWaypoint(int pointId)
+        public WaypointTable ReadWaypoint(int pointId)
         {
-            return _connection.FindWithQuery<Waypoint>("SELECT * FROM WaypointTable WHERE [WaypointId] = ?", pointId);
+            var waypoint = from w in _connection.Table<WaypointTable>() where w.WaypointId == pointId select w;
+            return waypoint.FirstOrDefault();
         }
 
         public List<Waypoint> ReadWaypoints()
@@ -76,6 +78,11 @@ namespace CultureCompass.Database
         public void CloseDatabase()
         {
             _connection.Close();
+        }
+
+        internal void DeleteAllWaypoints()
+        {
+            _connection.DeleteAll<WaypointTable>();
         }
     }
 }

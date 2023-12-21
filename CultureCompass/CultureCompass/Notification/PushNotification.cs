@@ -8,8 +8,9 @@ using Plugin.LocalNotification.AndroidOption;
 
 namespace CultureCompass.Notification
 {
-    internal class PushNotification : INotificationType
+    public class PushNotification : INotificationType
     {
+        private bool enabled = false;
         public void SendNotification(string title, string description)
         {
             CheckPermissionOfUser();
@@ -22,7 +23,7 @@ namespace CultureCompass.Notification
                 BadgeNumber = 42,
                 Schedule = new NotificationRequestSchedule
                 {
-                    NotifyTime = DateTime.Now.AddSeconds(5),
+                    NotifyTime = DateTime.Now,
                 },
                 Android = new AndroidOptions
                 {
@@ -33,12 +34,22 @@ namespace CultureCompass.Notification
         }
         private async void CheckPermissionOfUser()
         {
-            var enabled = LocalNotificationCenter.Current.AreNotificationsEnabled().Result;
+            enabled = LocalNotificationCenter.Current.AreNotificationsEnabled().Result;
 
             if (!enabled)
             {
                 await LocalNotificationCenter.Current.RequestNotificationPermission();
             }
         }
+
+        public bool IsPermissionGranted()
+        {
+            return enabled;
+        }
+
+
+
+
+
     }
 }

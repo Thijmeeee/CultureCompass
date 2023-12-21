@@ -4,16 +4,40 @@ namespace CultureCompass.Information
 {
     internal class DatabaseManager
     {
-        public Database.Database database {  get; set; }
+        private Database.Database database;
+
+        public DatabaseManager()
+        {
+            database = new Database.Database();
+ 
+        }
 
         public Waypoint GetWaypoint(int pointId)
         {
-            return database.ReadWaypoint(pointId);
+            WaypointTable waypointTable = database.ReadWaypoint(pointId);
+
+            return new Waypoint()
+            {
+                ID = waypointTable.WaypointId,
+                X = waypointTable.XCoordinate,
+                Y = waypointTable.YCoordinate,
+                Name = waypointTable.Name,
+                Year = waypointTable.YearCreated,
+                ImagePath = waypointTable.PictureName,
+                InfoDutch = waypointTable.InfoDutch,
+                InfoEnglish = waypointTable.InfoEnglish,
+                InfoFrench = waypointTable.InfoFrench
+            };
         }
 
-        public List<Waypoint> GetAllWaypoints(int pointId)
+        public List<Waypoint> GetAllWaypoints()
         {
             return database.ReadWaypoints();
+        }
+
+        public void DeleteAddWaypoints()
+        {
+            database.DeleteAllWaypoints();
         }
 
         public void AddWaypoint(Waypoint point)
@@ -42,8 +66,5 @@ namespace CultureCompass.Information
             };
             database.UpdateWaypoint(updatedReceived);
         }
-
-        
-
     }
 }

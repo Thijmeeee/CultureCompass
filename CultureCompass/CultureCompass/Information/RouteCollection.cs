@@ -2,6 +2,12 @@
 {
     internal class RouteCollection
     {
-        private List<Route> _routes { get; set; } = new List<Route>();
+        public Routes routes;
+        public RouteCollection()
+        {
+            RouteBuilder routeBuilder = new RouteBuilder();
+            routes = new Routes();
+            routes.RouteList = routeBuilder.InitRoutes();
+        }
     }
 }

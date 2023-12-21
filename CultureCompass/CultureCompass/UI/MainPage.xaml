@@ -1,18 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CultureCompass.UI.MainPage">
-    <VerticalStackLayout>
-        <!-- this is to test the database -->
-        <Label x:Name="waypointid"></Label>
-        <Label x:Name="name"></Label>
-        <Label x:Name="yearcreated"></Label>
-        <Label x:Name="picturename"></Label>
-        <Label x:Name="infoenglish"></Label>
-        <Label x:Name="infodutch"></Label>
-        <Label x:Name="infofrench"></Label>
-        <Label x:Name="xcoordinate"></Label>
-        <Label x:Name="ycoordinate"></Label>
-    </VerticalStackLayout>
-    
+             x:Class="CultureCompass.UI.MainPage"
+             Shell.BackgroundColor="#013B8D"
+             Shell.TitleColor="White"
+             Title="Welcome">
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, *, Auto, Auto"
+          ColumnDefinitions="*, *"
+          Padding="15">
+        
+        <Label
+                VerticalOptions="Center" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                Text="Instructions about usage of the app"
+                FontSize="20"
+                HorizontalOptions="Start"/>
+        <Label
+                VerticalOptions="Center" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+                Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis nulla eu felis fringilla vulputate. Nullam porta eleifend lacinia. Donec at iaculis tellus."
+                HorizontalOptions="Start"
+                Margin="0,0,0,20"/>
+        <Label
+                VerticalOptions="Center" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"
+                Text="Instructions about usage of the route"
+                FontSize="20"
+                HorizontalOptions="Start"/>
+        <Label
+                VerticalOptions="Center" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"
+                Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In facilisis nulla eu felis fringilla vulputate. Nullam porta eleifend lacinia. Donec at iaculis tellus."
+                HorizontalOptions="Start"/>
+
+        <Button x:Name="StartButton" Text="Start Route" Clicked="OnStartClicked" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Margin="20" BackgroundColor="#013B8D" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>
+        
+        <Image x:Name="AgsLogo" Source="ags_logo.png" Grid.Row="6" Grid.Column="0" WidthRequest="100" HeightRequest="100" Margin="10"/>
+        <Image x:Name="VvvLogo" Source="vvv_logo.png" Grid.Row="6" Grid.Column="1" WidthRequest="100" HeightRequest="100" Margin="10"/>
+
+    </Grid>
 </ContentPage>

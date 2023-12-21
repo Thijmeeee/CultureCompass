@@ -1,8 +1,11 @@
 ﻿using CultureCompass.Information;
 using CultureCompass.Notification;
 using CultureCompass.UI;
+using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Devices.Sensors;
+using Microsoft.Maui.Maps;
 using Map = Microsoft.Maui.Controls.Maps.Map;
+using NavigationPage = CultureCompass.UI.NavigationPage;
 
 
 //https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/map?view=net-maui-8.0
@@ -13,9 +16,9 @@ using Map = Microsoft.Maui.Controls.Maps.Map;
 
 namespace CultureCompass.Navigation
 {
-    internal class RouteManager
+    public class RouteManager
     {
-        private MainPage mainPage;
+        private NavigationPage navigationPage;
         private LocationListener locationListener;
         private MapManager mapManager;
         private NotificationManager notificationManager;
@@ -24,12 +27,13 @@ namespace CultureCompass.Navigation
         private int routeIndex;
 
 
-        public RouteManager(MainPage mainPage)
+        public RouteManager(NavigationPage navigationPage)
         {
-            this.mainPage = mainPage;
+            this.navigationPage = navigationPage;
 
             this.mapManager = new MapManager(this);
             mapManager.CreateMap().Wait();
+
 
             this.locationListener = new LocationListener(this, mapManager);
             locationListener.StartListening();
@@ -44,7 +48,7 @@ namespace CultureCompass.Navigation
             {
                 Location location = await Geolocation.Default.GetLastKnownLocationAsync();
 
-                
+
 
                 if (location != null)
                     return location;
@@ -61,7 +65,7 @@ namespace CultureCompass.Navigation
             try
             {
                 Waypoint waypoint = route.waypoints[routeIndex];
-                return new Location(waypoint.X, waypoint.Y);
+                return new Location(waypoint.Y, waypoint.X);
             }
             catch (Exception e)
             {
@@ -72,56 +76,53 @@ namespace CultureCompass.Navigation
 
         public void ArrivedAtWaypoint()
         {
+            if (route.waypoints[routeIndex] != null)
+                notificationManager.SendNotification(route.waypoints[routeIndex].Name, route.waypoints[routeIndex].InfoEnglish);
+
             routeIndex++;
 
-          
-
-            //send notification that user is close to waypoint
-
-            if (route.waypoints.Count > routeIndex)
-            {
-                RouteToNextPoint().Wait();
-            }
-            else
+            if (route.waypoints.Count <= routeIndex)
             {
                 //end of route
                 locationListener.StopListening();
             }
         }
 
-        public async Task SetRoute(Route route)
+        public LocationListener GetLocationListener()
         {
-            this.routeIndex = 0;
-            this.route = route;
-            if (route.waypoints.Count == 0)
-            {
-                //test code, can be removed later
-                route.waypoints = new List<Waypoint>()
-                {
-                    new()
-                    {
-                        ID = 0,
-                        X = 51.58903179679572,
-                        Y = 4.775741802339474,
-                        Name = "Test"
-                    }
-                };
-            }
-            await RouteToNextPoint();
+            return this.locationListener;
         }
 
-        private async Task RouteToNextPoint()
+        public Route GetRoute()
         {
-            Waypoint waypoint = route.waypoints[routeIndex];
+            return this.route;
+        }
 
-            mapManager.AddWaypointPin(waypoint);
+        public async Task SetRoute(Route route)
+        {
+            if (route == null || route.waypoints == null) return;
+            this.routeIndex = 0;
+            this.route = route;
+
+            foreach (Waypoint waypoint in route.waypoints)
+            {
+                mapManager.AddWaypointPin(waypoint);
+            }
+        }
+
+        public void UpdateDistance(Distance distance)
+        {
+            navigationPage.UpdateDistance(distance);
         }
 
         public void UpdateMap(Map map)
         {
-            notificationManager.SendNotification($"Location: kip", "test");
+            navigationPage.UpdateMap(map);
+        }
 
-            mainPage.UpdateMap(map);
+        public void PinClickedGoToDetailPage(Waypoint waypoint)
+        {
+            navigationPage.GoToWaypointPage(waypoint);
         }
     }
 }

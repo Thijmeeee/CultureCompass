@@ -7,13 +7,18 @@ using Plugin.LocalNotification;
 
 namespace CultureCompass.Notification
 {
-    internal class NotificationManager
+    public class NotificationManager
     {
         public INotificationType NotificationType { get; set; } = new PushNotification();
 
         public async void SendNotification(string text, string description)
         {
             NotificationType.SendNotification(text, description);
+        }
+
+        public bool IsPermissionGranted()
+        {
+            return NotificationType.IsPermissionGranted();
         }
     }
 

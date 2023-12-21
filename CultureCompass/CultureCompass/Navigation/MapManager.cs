@@ -1,14 +1,18 @@
-﻿using CultureCompass.Information;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using CultureCompass.Information;
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 using Map = Microsoft.Maui.Controls.Maps.Map;
 
 namespace CultureCompass.Navigation
 {
-    internal class MapManager(RouteManager routeManager)
+    public class MapManager(RouteManager routeManager)
     {
         private Map map;
         private Distance mapSize = Distance.FromMeters(50);
+        private Polyline polyline;
+        private RouteLine routeLine = new();
         public async Task<Map> CreateMap()
         {
             Location location = await routeManager.GetCurrentLocation();
@@ -23,7 +27,6 @@ namespace CultureCompass.Navigation
             map = new Map(mapSpan)
             {
                 MapType = MapType.Street,
-                IsTrafficEnabled = true,
                 IsScrollEnabled = true,
                 IsZoomEnabled = true,
                 IsShowingUser = true,
@@ -37,29 +40,25 @@ namespace CultureCompass.Navigation
             {
                 Label = waypoint.Name,
                 Type = PinType.Place,
-                Location = new Location(waypoint.X, waypoint.Y)
+                Location = new Location(waypoint.Y, waypoint.X)
             };
             map.Pins.Add(pin);
+            pin.MarkerClicked += (s, args) => routeManager.PinClickedGoToDetailPage(waypoint);
             routeManager.UpdateMap(map);
         }
 
-        private Polyline polyline;
-
-        public void UpdateRouteLine(Location currentLocation)
+        public async void UpdateRouteLine(Location currentLocation)
         {
             map.MapElements.Remove(polyline);
+
             Location waypointLocation = routeManager.GetWaypointLocation();
 
-            polyline = new Polyline
-            {
-                StrokeColor = Colors.Blue,
-                StrokeWidth = 12,
-                Geopath =
-                {
-                    currentLocation,
-                    waypointLocation,
-                }
-            };
+            string origin = currentLocation.Latitude + "," + currentLocation.Longitude;
+            string destination = waypointLocation.Latitude + "," + waypointLocation.Longitude;
+
+            polyline = await routeLine.GetRouteLine(origin, destination);
+
+            routeManager.UpdateDistance(new Distance(routeLine.Distance));
             map.MapElements.Add(polyline);
             routeManager.UpdateMap(map);
         }
