@@ -30,7 +30,7 @@ namespace CultureCompass.Information
             };
         }
 
-        public List<Waypoint> GetAllWaypoints()
+        public List<Waypoint>? GetAllWaypoints()
         {
             return database.ReadWaypoints();
         }

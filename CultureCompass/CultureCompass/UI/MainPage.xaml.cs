@@ -19,7 +19,8 @@ namespace CultureCompass.UI
 
             _database = new DatabaseManager();
             
-            if (_database.GetAllWaypoints().Count == 0)
+            List<Waypoint>? waypoints = _database.GetAllWaypoints();
+            if ( waypoints is null || waypoints.Count == 0)
                 LoadWaypointsIntoDatabase();
 
             // TestDatabase();
