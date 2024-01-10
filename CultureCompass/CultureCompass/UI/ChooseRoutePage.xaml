@@ -17,10 +17,13 @@
         </Grid.RowDefinitions>
 
 
-        <CollectionView x:Name="collectionView" ItemsLayout="VerticalList" IsGrouped="False" SelectionMode="Single" SelectionChanged="collectionView_SelectionChanged" ItemsSource="{Binding RouteList}">
+        <CollectionView x:Name="collectionView" ItemsLayout="VerticalList" IsGrouped="False" SelectionMode="Single"  ItemsSource="{Binding RouteList}">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="{x:Type routes:Route}">
                     <Frame Margin="10">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnRouteTapped" NumberOfTapsRequired="1" CommandParameter="{Binding .}"></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width=".2*"/>
@@ -45,7 +48,5 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-
-        <Button x:Name="StartRouteButton" Text="{x:Static strings:AppResources.RouteStart}" Clicked="OnRouteStartedClicked" Margin="20" BackgroundColor="#013B8D" TextColor="White" FontSize="Medium" FontAttributes="Bold" VerticalOptions="End" />
     </Grid>
 </ContentPage>

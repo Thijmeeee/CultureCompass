@@ -8,20 +8,12 @@ public partial class ChooseRoutePage : ContentPage
 	public ChooseRoutePage()
 	{
 		InitializeComponent();
-        StartRouteButton.IsEnabled = false;
     }
 
-	public void OnRouteStartedClicked(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new NavigationPage((Route)collectionView.SelectedItem));
-	}
-
-    private void collectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void OnRouteTapped(object sender, TappedEventArgs e)
     {
-		if (e.CurrentSelection == null)
-		{
-			StartRouteButton.IsEnabled = false;
-		}
-		else StartRouteButton.IsEnabled = true;
+		Route route = e.Parameter as Route;
+
+        Navigation.PushAsync(new NavigationPage(route));
     }
 }
