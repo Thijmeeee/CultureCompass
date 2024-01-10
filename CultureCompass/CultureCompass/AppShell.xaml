@@ -5,8 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:CultureCompass"
     xmlns:ui="clr-namespace:CultureCompass.UI"
+    xmlns:strings="clr-namespace:CultureCompass.Resources.Strings"
     Shell.FlyoutBehavior="Disabled"
-    Title="CultureCompass">
+    Title="{x:Static strings:AppResources.AppName}">
 
     <ShellContent
         Title="Home"
