@@ -18,7 +18,7 @@ namespace CultureCompass.Database
             _connection.CreateTable<WaypointTable>();
         }
         
-        public void CreateWaypoint(Waypoint point)
+        public int CreateWaypoint(Waypoint point)
         {
             if (point != null)
             {
@@ -36,7 +36,9 @@ namespace CultureCompass.Database
                     YCoordinate = point.Y
                 };
                 _connection.Insert(waypoint);
+                return _connection.ExecuteScalar<int>("SELECT last_insert_rowid()");
             }
+            else return 0;
         }
 
         public WaypointTable ReadWaypoint(int pointId)
@@ -47,7 +49,15 @@ namespace CultureCompass.Database
 
         public List<Waypoint>? ReadWaypoints()
         {
-            return _connection.FindWithQuery<List<Waypoint>>("SELECT * FROM WaypointTable");
+            int count = _connection.Table<WaypointTable>().Count();
+            if(count == 0)
+            {
+                return new List<Waypoint>();
+            }
+            else
+            {
+                return _connection.FindWithQuery<List<Waypoint>>("SELECT * FROM WaypointTable");
+            }
         }
 
         public void UpdateWaypoint(WaypointTable updatedPoint)

@@ -2,7 +2,7 @@
 
 namespace CultureCompass.Information
 {
-    internal class DatabaseManager
+    public class DatabaseManager
     {
         private Database.Database database;
 
@@ -15,19 +15,22 @@ namespace CultureCompass.Information
         public Waypoint GetWaypoint(int pointId)
         {
             WaypointTable waypointTable = database.ReadWaypoint(pointId);
-
-            return new Waypoint()
+            if (waypointTable != null)
             {
-                ID = waypointTable.WaypointId,
-                X = waypointTable.XCoordinate,
-                Y = waypointTable.YCoordinate,
-                Name = waypointTable.Name,
-                Year = waypointTable.YearCreated,
-                ImagePath = waypointTable.PictureName,
-                InfoDutch = waypointTable.InfoDutch,
-                InfoEnglish = waypointTable.InfoEnglish,
-                InfoFrench = waypointTable.InfoFrench
-            };
+                return new Waypoint()
+                {
+                    ID = waypointTable.WaypointId,
+                    X = waypointTable.XCoordinate,
+                    Y = waypointTable.YCoordinate,
+                    Name = waypointTable.Name,
+                    Year = waypointTable.YearCreated,
+                    ImagePath = waypointTable.PictureName,
+                    InfoDutch = waypointTable.InfoDutch,
+                    InfoEnglish = waypointTable.InfoEnglish,
+                    InfoFrench = waypointTable.InfoFrench
+                };
+            }
+            else return null;
         }
 
         public List<Waypoint>? GetAllWaypoints()
@@ -35,14 +38,14 @@ namespace CultureCompass.Information
             return database.ReadWaypoints();
         }
 
-        public void DeleteAddWaypoints()
+        public void DeleteAllWaypoints()
         {
             database.DeleteAllWaypoints();
         }
 
-        public void AddWaypoint(Waypoint point)
+        public int AddWaypoint(Waypoint point)
         {
-            database.CreateWaypoint(point);
+            return database.CreateWaypoint(point);
         }
 
         public void DeleteWaypoint(Waypoint point)
