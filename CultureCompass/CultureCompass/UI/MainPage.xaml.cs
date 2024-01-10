@@ -1,9 +1,4 @@
-﻿using CultureCompass.Database;
-using CultureCompass.Information;
-using CultureCompass.Navigation;
-using Microsoft.Maui.Controls.Maps;
-using Map = Microsoft.Maui.Controls.Maps.Map;
-using CultureCompass.UI;
+﻿using CultureCompass.Information;
 
 namespace CultureCompass.UI
 {
@@ -14,16 +9,11 @@ namespace CultureCompass.UI
         {
             InitializeComponent();
 
-            //RouteManager routeManager = new RouteManager(new NavigationPage());
-            //routeManager.SetRoute(new Route());
-
             _database = new DatabaseManager();
-            
+
             List<Waypoint>? waypoints = _database.GetAllWaypoints();
             if ( waypoints is null || waypoints.Count == 0)
                 LoadWaypointsIntoDatabase();
-
-            // TestDatabase();
         }
 
         private void LoadWaypointsIntoDatabase()

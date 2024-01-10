@@ -78,13 +78,6 @@ namespace CultureCompass.Navigation
             {
                 Distance distance = Distance.BetweenPositions(e.Location, currentWaypoint);
 
-                //string text = "distance to waypoint: " + distance.Meters + "m";
-                //ToastDuration duration = ToastDuration.Short;
-                //double fontSize = 14;
-
-                //var toast = Toast.Make(text, duration, fontSize);
-                //toast.Show();
-
                 if (distance.Meters <= distanceThreshold)
                 {
                     routeManager.ArrivedAtWaypoint();

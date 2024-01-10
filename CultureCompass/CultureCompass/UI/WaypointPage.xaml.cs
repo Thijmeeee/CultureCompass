@@ -1,4 +1,3 @@
-using System.Resources;
 using CultureCompass.Information;
 
 namespace CultureCompass.UI;

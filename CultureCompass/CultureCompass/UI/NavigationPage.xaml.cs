@@ -1,15 +1,12 @@
-using Microsoft.Maui.Maps;
-using Microsoft.Maui.Controls.Maps;
 using Map = Microsoft.Maui.Controls.Maps.Map;
 using CultureCompass.Information;
 using CultureCompass.Navigation;
-using CultureCompass.API;
 using Distance = Microsoft.Maui.Maps.Distance;
 namespace CultureCompass.UI;
 
 public partial class NavigationPage : ContentPage
 {
-    public NavigationPage(Information.Route route)
+    public NavigationPage(Route route)
 	{
 		InitializeComponent();
 
