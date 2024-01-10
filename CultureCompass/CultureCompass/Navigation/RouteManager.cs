@@ -110,9 +110,9 @@ namespace CultureCompass.Navigation
             }
         }
 
-        public void UpdateDistance(Distance distance)
+        public void UpdateValues(Distance distance, int duration)
         {
-            navigationPage.UpdateDistance(distance);
+            navigationPage.UpdateValues(distance, duration);
         }
 
         public void UpdateMap(Map map)

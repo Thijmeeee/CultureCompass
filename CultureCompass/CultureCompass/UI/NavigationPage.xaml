@@ -7,6 +7,10 @@
              Shell.BackgroundColor="#013B8D"
              Shell.TitleColor="White"
              Title="Maps">
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False" IsEnabled="False" />
+    </Shell.BackButtonBehavior>
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -23,6 +27,10 @@
             <HorizontalStackLayout Margin="20">
                 <Label Text="{x:Static strings:AppResources.NavigationNextWaypointDistancePrefix}" FontSize="16" FontAttributes="Bold"/>
                 <Label x:Name="DistanceLabel" Margin="10,0,0,0" FontSize="16" FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Margin="20,0,20,20">
+                <Label Text="{x:Static strings:AppResources.DurationPrefix}" FontSize="16" FontAttributes="Bold"/>
+                <Label x:Name="DurationLabel" Margin="10,0,0,0" FontSize="16" FontAttributes="Bold"/>
             </HorizontalStackLayout>
 
             <Button x:Name="StopRouteButton" Text="{x:Static strings:AppResources.RouteStop}" Clicked="StopRouteButton_Clicked" Margin="20,0,20,20" BackgroundColor="#013B8D" TextColor="White" FontSize="Medium" FontAttributes="Bold"/>

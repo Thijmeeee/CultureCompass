@@ -14,9 +14,11 @@ public partial class NavigationPage : ContentPage
         routeManager.SetRoute(route).Wait();
     }
 
-    public void UpdateDistance(Distance distance)
+    public void UpdateValues(Distance distance, int duration)
     {
         DistanceLabel.Text = $"{distance.Kilometers} km";
+        TimeSpan time = TimeSpan.FromSeconds(duration);
+        DurationLabel.Text = $"{time.ToString()}";
     }
     public void UpdateMap(Map newMap)
     {

@@ -126,6 +126,9 @@
   <data name="AppUsageHeader" xml:space="preserve">
     <value>Utilisation de l'application</value>
   </data>
+  <data name="DurationPrefix" xml:space="preserve">
+    <value>Temps restant jusqu'au prochain waypoint: </value>
+  </data>
   <data name="NavigationNextWaypointDistancePrefix" xml:space="preserve">
     <value>Distance restante jusqu'au prochain waypoint: </value>
   </data>

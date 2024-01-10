@@ -88,6 +88,15 @@ namespace CultureCompass.Resources.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Time left to next waypoint: .
+        /// </summary>
+        internal static string DurationPrefix {
+            get {
+                return ResourceManager.GetString("DurationPrefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Distance left to next waypoint: .
         /// </summary>
         internal static string NavigationNextWaypointDistancePrefix {
